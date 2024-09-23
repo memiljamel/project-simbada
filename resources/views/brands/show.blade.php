@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Categories')
+@section('title', 'Brands')
 
 @section('content')
     <div class="flex flex-col w-full h-full p-0 m-0 relative">
@@ -22,14 +22,14 @@
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
-                            <a href="{{ route('categories.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
-                                {{ __('Categories') }}
+                            <a href="{{ route('brands.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
+                                {{ __('Brands') }}
                             </a>
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
                             <span class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-black/[0.60] cursor-default dark:text-white/[0.60]">
-                                {{ $category->name }}
+                                {{ $brand->name }}
                             </span>
                         </li>
                     </ol>
@@ -46,7 +46,7 @@
 
                                 {{-- Icon Button --}}
                                 <div class="inline-block w-auto h-auto p-0 m-0 relative">
-                                    <a href="{{ route('categories.index') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Back" data-te-ripple-init data-te-ripple-color="light">
+                                    <a href="{{ route('brands.index') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Back" data-te-ripple-init data-te-ripple-color="light">
                                         <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                             <path d="M0 0h24v24H0z" fill="none" />
                                             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="flex justify-start items-center gap-2 w-auto h-auto p-0 m-0 overflow-hidden relative">
-                                <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('categories.destroy', $category->id) }}" method="POST" autocomplete="off" autocapitalize="off">
+                                <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('brands.destroy', $brand->id) }}" method="POST" autocomplete="off" autocapitalize="off">
                                     @csrf
                                     @method('DELETE')
 
@@ -74,7 +74,7 @@
 
                                         {{-- Icon Link --}}
                                         <div class="block w-auto h-auto p-0 m-0 relative">
-                                            <a href="{{ route('categories.edit', $category->id) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Edit" data-te-ripple-init data-te-ripple-color="light">
+                                            <a href="{{ route('brands.edit', $brand->id) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Edit" data-te-ripple-init data-te-ripple-color="light">
                                                 <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                     <path d="M0 0h24v24H0z" fill="none" />
                                                     <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
@@ -120,7 +120,7 @@
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $category->id }}
+                                                {{ $brand->id }}
                                             </span>
                                         </div>
                                     </div>
@@ -136,7 +136,7 @@
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $category->name }}
+                                                {{ $brand->name }}
                                             </span>
                                         </div>
                                     </div>
@@ -152,7 +152,7 @@
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $category->description }}
+                                                {{ $brand->description }}
                                             </span>
                                         </div>
                                     </div>
@@ -168,7 +168,7 @@
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $category->assets->count() }}
+                                                {{ $brand->assets->count() }}
                                             </span>
                                         </div>
                                     </div>
@@ -184,7 +184,7 @@
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $category->created_at }}
+                                                {{ $brand->created_at }}
                                             </span>
                                         </div>
                                     </div>
@@ -200,7 +200,7 @@
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $category->updated_at }}
+                                                {{ $brand->updated_at }}
                                             </span>
                                         </div>
                                     </div>
