@@ -21,9 +21,9 @@ class CategoryController extends Controller
         $search = $request->query('search');
 
         $categories = Category::when($search, function (Builder $query, ?string $search) {
-                $query->where('name', 'LIKE', "%{$search}%")
-                    ->orWhere('description', 'LIKE', "%{$search}%");
-            })
+            $query->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('description', 'LIKE', "%{$search}%");
+        })
             ->latest()
             ->paginate()
             ->withQueryString();
@@ -48,7 +48,7 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request): RedirectResponse
     {
-        $category = new Category();
+        $category = new Category;
         $category->name = $request->input('name');
         $category->description = $request->input('description');
         $category->save();
