@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Categories')
+@section('title', 'Brands')
 
 @section('content')
     <div class="flex flex-col w-full h-full p-0 m-0 relative">
@@ -23,7 +23,7 @@
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
                             <span class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-black/[0.60] cursor-default dark:text-white/[0.60]">
-                                {{ __('Categories') }}
+                                {{ __('Brands') }}
                             </span>
                         </li>
                     </ol>
@@ -49,13 +49,13 @@
                             <div class="flex-1 block w-auto h-auto p-0 m-0 overflow-hidden relative basis-auto order-1 sm:order-none">
                                 <div class="block w-full h-auto p-0 m-0 relative">
                                     <h6 class="block w-full h-auto px-2 py-1.5 m-0 headline-6 text-black/[0.87] truncate dark:text-white/[0.87]">
-                                        {{ __('All Category') }}
+                                        {{ __('All Brand') }}
                                     </h6>
                                 </div>
                             </div>
 
                             <div class="block w-auto h-auto p-0 mx-2 mt-2 overflow-hidden relative basis-full order-3 sm:basis-auto sm:order-none">
-                                <form class="block w-auto h-auto p-0 m-0 relative" action="{{ route('categories.index') }}" method="GET"  autocomplete="off" autocapitalize="off">
+                                <form class="block w-auto h-auto p-0 m-0 relative" action="{{ route('brands.index') }}" method="GET"  autocomplete="off" autocapitalize="off">
 
                                     {{-- Search --}}
                                     <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
@@ -78,7 +78,7 @@
 
                                     {{-- Icon Link --}}
                                     <div class="block w-auto h-auto p-0 m-0 relative">
-                                        <a href="{{ route('categories.create') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Create" data-te-ripple-init data-te-ripple-color="light">
+                                        <a href="{{ route('brands.create') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Create" data-te-ripple-init data-te-ripple-color="light">
                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                 <path d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
@@ -169,22 +169,22 @@
                                     </thead>
 
                                     <tbody class="table-row-group *:border-b *:border-solid *:border-chinese-white *:transition *:ease-in-out *:duration-300 *:motion-reduce:transition-none hover:*:bg-black/[0.04] dark:*:border-dark-liver dark:hover:*:bg-white/[0.04]">
-                                        @forelse($categories as $category)
+                                        @forelse($brands as $brand)
                                             <tr class="table-row text-inherit align-middle outline-none relative">
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                    {{ $loop->iteration + ($categories->currentPage() - 1) * $categories->perPage() }}
+                                                    {{ $loop->iteration + ($brands->currentPage() - 1) * $brands->perPage() }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                    {{ $category->name }}
+                                                    {{ $brand->name }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                    {{ $category->description }}
+                                                    {{ $brand->description }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-right truncate dark:text-white/[0.87]">
-                                                    {{ $category->assets->count() }}
+                                                    {{ $brand->assets->count() }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
-                                                    <form class="inline-block w-auto h-auto p-0 m-0 relative" action="{{ route('categories.destroy', $category->id) }}" method="POST" autocomplete="off" autocapitalize="off">
+                                                    <form class="inline-block w-auto h-auto p-0 m-0 relative" action="{{ route('brands.destroy', $brand->id) }}" method="POST" autocomplete="off" autocapitalize="off">
                                                         @csrf
                                                         @method('DELETE')
 
@@ -199,7 +199,7 @@
 
                                                             <ul class="hidden min-w-[128px] w-auto max-w-[280px] h-auto py-2 m-0 list-none rounded bg-white shadow-08dp absolute top-full right-0 z-10 [&[data-te-dropdown-show]]:block dark:bg-charleston-green" data-te-dropdown-menu-ref>
                                                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                    <a href="{{ route('categories.show', $category->id) }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
+                                                                    <a href="{{ route('brands.show', $brand->id) }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                                                         <div class="inline-block w-auto h-auto p-0 m-0 relative">
                                                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -216,7 +216,7 @@
                                                                 </li>
 
                                                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                    <a href="{{ route('categories.edit', $category->id) }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
+                                                                    <a href="{{ route('brands.edit', $brand->id) }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                                                         <div class="inline-block w-auto h-auto p-0 m-0 relative">
                                                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -277,7 +277,7 @@
 
                             {{-- Pagination --}}
                             <div class="flex-1 block w-full min-h-[36px] h-auto p-0 m-0 relative">
-                                {{ $categories->onEachSide(2)->links() }}
+                                {{ $brands->onEachSide(2)->links() }}
                             </div>
                             {{-- End Pagination --}}
 
