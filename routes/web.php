@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DistributorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::resources([
     'categories' => CategoryController::class,
     'brands' => BrandController::class,
+    'distributors' => DistributorController::class,
 ]);

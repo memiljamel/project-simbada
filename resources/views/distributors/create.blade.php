@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Categories')
+@section('title', 'Distributors')
 
 @section('content')
     <div class="flex flex-col w-full h-full p-0 m-0 relative">
@@ -22,8 +22,8 @@
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
-                            <a href="{{ route('categories.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
-                                {{ __('Categories') }}
+                            <a href="{{ route('distributors.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
+                                {{ __('Distributors') }}
                             </a>
                         </li>
 
@@ -39,7 +39,7 @@
                 {{-- Cards --}}
                 <div class="block w-full h-auto p-0 mt-4 bg-white rounded text-black/[0.87] shadow-01dp overflow-hidden dark:bg-charleston-green">
 
-                    <form action="{{ route('categories.store') }}" method="POST" autocomplete="off" autocapitalize="off">
+                    <form action="{{ route('distributors.store') }}" method="POST" autocomplete="off" autocapitalize="off">
                         @csrf
                         @method('POST')
 
@@ -50,7 +50,7 @@
 
                                     {{-- Icon Link --}}
                                     <div class="inline-block w-auto h-auto p-0 m-0 relative">
-                                        <a href="{{ route('categories.index') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Back" data-te-ripple-init data-te-ripple-color="light">
+                                        <a href="{{ route('distributors.index') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Back" data-te-ripple-init data-te-ripple-color="light">
                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                 <path d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
@@ -93,6 +93,102 @@
                                             </div>
 
                                             @error('name')
+                                                <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
+                                                    {{ $message}}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 my-2 relative sm:flex-row last:mb-0">
+                                        <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
+                                            <div class="block w-auto h-auto p-0 mb-2 relative">
+
+                                                {{-- Input --}}
+                                                <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
+                                                    <textarea class="peer caret-primary block min-h-[48px] w-full border-0 bg-transparent pt-3 pb-2 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:opacity-60 disabled:cursor-not-allowed group-has-[.is-invalid]:!caret-error" rows="1" id="address" name="address" autocomplete="off" autocapitalize="off" spellcheck="false">{{ old('address') }}</textarea>
+
+                                                    <label class="pointer-events-none absolute top-0 left-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-3 leading-[1.6] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.25rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.25rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="address">
+                                                        {{ __('Address') }}
+                                                    </label>
+                                                </div>
+                                                {{-- End Input --}}
+
+                                            </div>
+
+                                            @error('address')
+                                                <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
+                                                    {{ $message }}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-2 mt-2 relative sm:flex-row first:mt-0 last:mb-0">
+                                        <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
+                                            <div class="block w-auto h-auto p-0 mb-2 relative">
+
+                                                {{-- Input --}}
+                                                <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
+                                                    <input type="tel" class="peer caret-primary block min-h-[48px] w-full border-0 bg-transparent pt-3 pb-2 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:opacity-60 disabled:cursor-not-allowed group-has-[.is-invalid]:!caret-error" id="telephone" name="telephone" value="{{ old('telephone') }}" autocomplete="off" autocapitalize="off" />
+
+                                                    <label class="pointer-events-none absolute top-0 left-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-3 leading-[1.6] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.25rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.25rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="telephone">
+                                                        {{ __('Telephone') }}
+                                                    </label>
+                                                </div>
+                                                {{-- End Input --}}
+
+                                            </div>
+
+                                            @error('telephone')
+                                                <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
+                                                    {{ $message}}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-2 mt-2 relative sm:flex-row first:mt-0 last:mb-0">
+                                        <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
+                                            <div class="block w-auto h-auto p-0 mb-2 relative">
+
+                                                {{-- Input --}}
+                                                <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
+                                                    <input type="email" class="peer caret-primary block min-h-[48px] w-full border-0 bg-transparent pt-3 pb-2 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:opacity-60 disabled:cursor-not-allowed group-has-[.is-invalid]:!caret-error" id="email" name="email" value="{{ old('email') }}" autocomplete="off" autocapitalize="off" />
+
+                                                    <label class="pointer-events-none absolute top-0 left-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-3 leading-[1.6] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.25rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.25rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="email">
+                                                        {{ __('Email') }}
+                                                    </label>
+                                                </div>
+                                                {{-- End Input --}}
+
+                                            </div>
+
+                                            @error('email')
+                                                <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
+                                                    {{ $message}}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-2 mt-2 relative sm:flex-row first:mt-0 last:mb-0">
+                                        <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
+                                            <div class="block w-auto h-auto p-0 mb-2 relative">
+
+                                                {{-- Input --}}
+                                                <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
+                                                    <input type="text" class="peer caret-primary block min-h-[48px] w-full border-0 bg-transparent pt-3 pb-2 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:opacity-60 disabled:cursor-not-allowed group-has-[.is-invalid]:!caret-error" id="officer" name="officer" value="{{ old('officer') }}" autocomplete="off" autocapitalize="off" autofocus />
+
+                                                    <label class="pointer-events-none absolute top-0 left-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-3 leading-[1.6] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.25rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.25rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="officer">
+                                                        {{ __('Officer') }}
+                                                    </label>
+                                                </div>
+                                                {{-- End Input --}}
+
+                                            </div>
+
+                                            @error('officer')
                                                 <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
                                                     {{ $message}}
                                                 </span>
