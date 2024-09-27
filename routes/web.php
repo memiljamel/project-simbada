@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DistributorController;
+use App\Http\Controllers\ResponsiblePersonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resources([
-    'categories' => CategoryController::class,
-    'brands' => BrandController::class,
-    'distributors' => DistributorController::class,
-]);
+Route::resource('categories', CategoryController::class);
+Route::resource('brands', BrandController::class);
+Route::resource('distributors', DistributorController::class);
+Route::resource('responsible-persons', ResponsiblePersonController::class)
+    ->parameters(['responsible-persons' => 'person']);
