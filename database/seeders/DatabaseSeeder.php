@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             BrandSeeder::class,
             DistributorSeeder::class,
+            ResponsiblePersonSeeder::class,
         ]);
     }
 }
