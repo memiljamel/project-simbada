@@ -25,7 +25,7 @@
         <div class="flex justify-start items-center gap-2 w-auto h-auto p-0 m-0 overflow-hidden relative">
             <div class="inline-block w-auto h-auto p-0 m-0 relative">
 
-                <form class="block w-auto h-auto p-0 m-0 relative" action="" method="POST">
+                <form class="block w-auto h-auto p-0 m-0 relative" action="{{ route('logout') }}" method="POST">
                     @csrf
                     @method('DELETE')
 

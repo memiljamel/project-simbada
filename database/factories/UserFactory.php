@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -10,6 +11,13 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var class-string<\Illuminate\Database\Eloquent\Model>
+     */
+    protected $model = User::class;
+
     /**
      * Define the model's default state.
      *
@@ -35,6 +43,18 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Indicate that the user is administrator.
+     */
+    public function administrator(): Factory
+    {
+        return $this->state(fn (array $attributes) => [
+            'name' => 'Administrator',
+            'email' => 'admin@domain.com',
+            'password' => '$2y$10$5j57vMDvrRtyabOrwf7agecaF6vOe5ntE2qAyWAEN2zxapZQw7Fta', // aB3@fR8$9Jp
         ]);
     }
 }
