@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Enums\FinanceTypeEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ResponsiblePerson extends Model
+class AssetFinance extends Model
 {
     use HasFactory, HasUuids;
 
@@ -16,7 +17,7 @@ class ResponsiblePerson extends Model
      *
      * @var string
      */
-    protected $table = 'responsible_persons';
+    protected $table = 'asset_finances';
 
     /**
      * The primary key associated with the table.
@@ -52,19 +53,27 @@ class ResponsiblePerson extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'position',
-        'address',
-        'telephone',
-        'email',
-        'description',
+        'asset_id',
+        'type',
+        'date',
+        'amount',
+        'notes',
     ];
 
     /**
-     * Get the asset histories for the responsible person.
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
      */
-    public function assetHistories(): HasMany
+    protected $casts = [
+        'type' => FinanceTypeEnum::class,
+    ];
+
+    /**
+     * Get the asset that owns the asset finance.
+     */
+    public function asset(): BelongsTo
     {
-        return $this->hasMany(AssetHistory::class, 'responsible_person_id', 'id');
+        return $this->belongsTo(Asset::class, 'asset_id', 'id');
     }
 }

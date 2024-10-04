@@ -88,53 +88,6 @@
                                     {{-- End Icon Link --}}
 
                                 </div>
-
-                                <div class="inline-block w-auto h-auto p-0 m-0 relative">
-
-                                    {{-- Dropdown --}}
-                                    <div class="block w-auto h-auto p-0 m-0 relative" data-te-dropdown-ref>
-                                        <button type="button" class="inline-block w-9 h-9 p-1.5 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-toggle-ref data-te-dropdown-animation="off" data-te-toggle="tooltip" title="Download" data-te-ripple-init data-te-ripple-color="light">
-                                            <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
-                                            </svg>
-                                        </button>
-
-                                        <ul class="hidden min-w-[128px] w-auto max-w-[280px] h-auto py-2 m-0 list-none rounded bg-white shadow-08dp absolute top-full right-0 z-10 [&[data-te-dropdown-show]]:block dark:bg-charleston-green" data-te-dropdown-menu-ref>
-                                            <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <a href="" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
-                                                    <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                        <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                            {{ __('PDF') }}
-                                                        </span>
-                                                    </div>
-                                                </a>
-                                            </li>
-
-                                            <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <a href="" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
-                                                    <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                        <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                            {{ __('Excel') }}
-                                                        </span>
-                                                    </div>
-                                                </a>
-                                            </li>
-
-                                            <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <a href="" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
-                                                    <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                        <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                            {{ __('CSV') }}
-                                                        </span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    {{-- End Dropdown --}}
-
-                                </div>
                             </div>
 
                         </div>
@@ -233,7 +186,7 @@
                                                                 </li>
 
                                                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                    <button type="submit" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none whitespace-nowrap overflow-hidden select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
+                                                                    <button type="button" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none whitespace-nowrap overflow-hidden select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                                                         <div class="inline-block w-auto h-auto p-0 m-0 relative">
                                                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                                                 <path d="M0 0h24v24H0z" fill="none" />

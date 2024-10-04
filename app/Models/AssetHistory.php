@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ResponsiblePerson extends Model
+class AssetHistory extends Model
 {
     use HasFactory, HasUuids;
 
@@ -16,7 +16,7 @@ class ResponsiblePerson extends Model
      *
      * @var string
      */
-    protected $table = 'responsible_persons';
+    protected $table = 'asset_histories';
 
     /**
      * The primary key associated with the table.
@@ -52,19 +52,37 @@ class ResponsiblePerson extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'position',
-        'address',
-        'telephone',
-        'email',
-        'description',
+        'asset_id',
+        'date_from',
+        'responsible_person',
+        'location',
+        'qty',
+        'condition_percentage',
+        'completeness_percentage',
+        'notes',
     ];
 
     /**
-     * Get the asset histories for the responsible person.
+     * Get the responsible person that owns the asset history.
      */
-    public function assetHistories(): HasMany
+    public function responsiblePerson(): BelongsTo
     {
-        return $this->hasMany(AssetHistory::class, 'responsible_person_id', 'id');
+        return $this->belongsTo(ResponsiblePerson::class, 'responsible_person_id', 'id');
+    }
+
+    /**
+     * Get the location that owns the asset history.
+     */
+    public function location(): BelongsTo
+    {
+        return $this->belongsTo(Location::class, 'location_id', 'id');
+    }
+
+    /**
+     * Get the asset that owns the asset history.
+     */
+    public function asset(): BelongsTo
+    {
+        return $this->belongsTo(Asset::class, 'asset_id', 'id');
     }
 }

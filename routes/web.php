@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ActiveAssetController;
+use App\Http\Controllers\AssetFinanceController;
+use App\Http\Controllers\AssetHistoryController;
 use App\Http\Controllers\Auth\ForgotController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -55,6 +58,12 @@ Route::middleware(['auth', 'verified', 'auth.session'])->group(function () {
         'locations' => LocationController::class,
     ]);
 
+    Route::resource('active-assets', ActiveAssetController::class)
+        ->parameters(['active-assets' => 'asset']);
+    Route::resource('asset-histories', AssetHistoryController::class)
+        ->parameters(['asset-histories' => 'history']);
+    Route::resource('asset-finances', AssetFinanceController::class)
+        ->parameters(['asset-finances' => 'finance']);
     Route::resource('responsible-persons', ResponsiblePersonController::class)
         ->parameters(['responsible-persons' => 'person']);
 

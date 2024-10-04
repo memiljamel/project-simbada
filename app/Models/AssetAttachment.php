@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
-class ResponsiblePerson extends Model
+class AssetAttachment extends Model
 {
     use HasFactory, HasUuids;
 
@@ -16,7 +18,7 @@ class ResponsiblePerson extends Model
      *
      * @var string
      */
-    protected $table = 'responsible_persons';
+    protected $table = 'asset_attachments';
 
     /**
      * The primary key associated with the table.
@@ -52,19 +54,27 @@ class ResponsiblePerson extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'position',
-        'address',
-        'telephone',
-        'email',
-        'description',
+        'filename',
+        'asset_id',
     ];
 
     /**
-     * Get the asset histories for the responsible person.
+     * Interact with the asset attachment's filename url.
      */
-    public function assetHistories(): HasMany
+    protected function filenameUrl(): Attribute
     {
-        return $this->hasMany(AssetHistory::class, 'responsible_person_id', 'id');
+        return Attribute::make(
+            get: function (mixed $value, array $attrs) {
+                return Storage::url($attrs['filename']);
+            }
+        );
+    }
+
+    /**
+     * Get the asset that owns the attachment.
+     */
+    public function asset(): BelongsTo
+    {
+        return $this->belongsTo(Asset::class, 'asset_id', 'id');
     }
 }
