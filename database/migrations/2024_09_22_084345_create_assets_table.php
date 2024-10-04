@@ -40,6 +40,7 @@ return new class extends Migration
             $table->text('photo')->nullable();
             $table->text('notes')->nullable();
             $table->text('qr_code');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
