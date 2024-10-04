@@ -109,7 +109,7 @@
                     <div class="block w-full h-auto p-4 m-0 border-y border-solid border-chinese-white overflow-hidden dark:border-dark-liver sm:p-6">
                         <div class="block w-full max-w-3xl h-auto p-0 m-0 relative">
 
-                            <ul class="block w-full !py-0 m-0 list-none shadow-none relative">
+                            <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">

@@ -30,15 +30,22 @@
                     </li>
                 </ul>
 
-                <ul class="block w-full py-2 pr-2 m-0 list-none shadow-none border-t border-solid border-chinese-white dark:border-dark-liver relative">
+                <ul class="block w-full py-2 pr-2 m-0 list-none shadow-none border-t border-solid border-chinese-white dark:border-dark-liver relative" id="accordion-assets">
                     <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
                         <span class="block w-auto h-auto px-5 py-2 m-0 caption text-black/[0.60] truncate dark:text-white/[0.60]">
-                            {{ __('Assets') }}
+                            {{ __('Asset') }}
                         </span>
                     </li>
 
                     <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                        <a href="" class="group flex justify-between items-center gap-4 w-full h-12 py-3 px-5 m-0 text-black/[0.60] rounded-r-full no-underline outline-none whitespace-nowrap overflow-hidden select-none relative hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] open:bg-primary/[0.04] open:text-primary open:hover:bg-primary/[0.04] open:active:bg-primary/[0.10] open:focus:bg-primary/[0.12] dark:open:bg-primary dark:open:text-black dark:open:hover:bg-primary dark:open:active:bg-primary dark:open:focus:bg-primary" data-te-ripple-init data-te-ripple-color="light">
+                        <a role="button" class="group flex justify-between items-center gap-4 w-full h-12 py-3 px-5 m-0 text-black/[0.60] rounded-r-full no-underline outline-none whitespace-nowrap overflow-hidden select-none relative hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] open:bg-primary/[0.04] open:text-primary open:hover:bg-primary/[0.04] open:active:bg-primary/[0.10] open:focus:bg-primary/[0.12] dark:open:bg-primary dark:open:text-black dark:open:hover:bg-primary dark:open:active:bg-primary dark:open:focus:bg-primary" data-te-collapse-init data-te-target="#collapse-active-assets" data-te-ripple-init data-te-ripple-color="light" @if (!request()->routeIs(['active-assets.*', 'asset-histories.*', 'asset-finances.*'])) data-te-collapse-collapsed @endif>
+                            <div class="inline-block min-w-[24px] w-auto h-auto p-0 m-0 rotate-[90deg] transition-transform duration-200 ease-in-out group-data-[te-collapse-collapsed]:me-0 group-data-[te-collapse-collapsed]:rotate-0 motion-reduce:transition-none absolute left-0 top-1/2 z-0 -translate-y-1/2">
+                                <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                                    <path d="M10 17l5-5-5-5v10z" />
+                                    <path d="M0 24V0h24v24H0z" fill="none" />
+                                </svg>
+                            </div>
+
                             <div class="inline-block min-w-[24px] w-auto h-auto p-0 m-0 relative">
                                 <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                     <path d="M0 0h24v24H0V0z" fill="none" />
@@ -52,6 +59,38 @@
                                 </span>
                             </div>
                         </a>
+
+                        <ul class="!visible hidden data-[te-collapse-show]:block" id="collapse-active-assets" data-te-collapse-item data-te-parent="#accordion-assets" @if(request()->routeIs(['active-assets.*', 'asset-histories.*', 'asset-finances.*'])) data-te-collapse-show @endif>
+                            <li class="block w-full h-auto p-0 m-0 overflow-hidden relative first:mt-2 last:mb-2">
+                                <a href="{{ route('active-assets.index') }}" class="group flex justify-between items-center gap-4 w-full h-12 py-3 px-5 m-0 text-black/[0.60] rounded-r-full no-underline outline-none whitespace-nowrap overflow-hidden select-none relative hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] open:bg-primary/[0.04] open:text-primary open:hover:bg-primary/[0.04] open:active:bg-primary/[0.10] open:focus:bg-primary/[0.12] dark:open:bg-primary dark:open:text-black dark:open:hover:bg-primary dark:open:active:bg-primary dark:open:focus:bg-primary" data-te-ripple-init data-te-ripple-color="light" @if (request()->routeIs('active-assets.*')) open @endif>
+                                    <div class="flex-1 inline-block w-full h-auto p-0 ml-10 overflow-hidden relative">
+                                        <span class="block w-full h-auto p-0 m-0 subtitle-1 text-black/[0.87] text-left truncate dark:text-white/[0.87] group-open:text-primary dark:group-open:text-black">
+                                            {{ __('Assets') }}
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="block w-full h-auto p-0 m-0 overflow-hidden relative first:mt-2 last:mb-2">
+                                <a href="{{ route('asset-histories.index') }}" class="group flex justify-between items-center gap-4 w-full h-12 py-3 px-5 m-0 text-black/[0.60] rounded-r-full no-underline outline-none whitespace-nowrap overflow-hidden select-none relative hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] open:bg-primary/[0.04] open:text-primary open:hover:bg-primary/[0.04] open:active:bg-primary/[0.10] open:focus:bg-primary/[0.12] dark:open:bg-primary dark:open:text-black dark:open:hover:bg-primary dark:open:active:bg-primary dark:open:focus:bg-primary" data-te-ripple-init data-te-ripple-color="light" @if (request()->routeIs('asset-histories.*')) open @endif>
+                                    <div class="flex-1 inline-block w-full h-auto p-0 ml-10 overflow-hidden relative">
+                                        <span class="block w-full h-auto p-0 m-0 subtitle-1 text-black/[0.87] text-left truncate dark:text-white/[0.87] group-open:text-primary dark:group-open:text-black">
+                                            {{ __('Histories') }}
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="block w-full h-auto p-0 m-0 overflow-hidden relative first:mt-2 last:mb-2">
+                                <a href="{{ route('asset-finances.index') }}" class="group flex justify-between items-center gap-4 w-full h-12 py-3 px-5 m-0 text-black/[0.60] rounded-r-full no-underline outline-none whitespace-nowrap overflow-hidden select-none relative hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] open:bg-primary/[0.04] open:text-primary open:hover:bg-primary/[0.04] open:active:bg-primary/[0.10] open:focus:bg-primary/[0.12] dark:open:bg-primary dark:open:text-black dark:open:hover:bg-primary dark:open:active:bg-primary dark:open:focus:bg-primary" data-te-ripple-init data-te-ripple-color="light" @if (request()->routeIs('asset-finances.*')) open @endif>
+                                    <div class="flex-1 inline-block w-full h-auto p-0 ml-10 overflow-hidden relative">
+                                        <span class="block w-full h-auto p-0 m-0 subtitle-1 text-black/[0.87] text-left truncate dark:text-white/[0.87] group-open:text-primary dark:group-open:text-black">
+                                            {{ __('Finances') }}
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
