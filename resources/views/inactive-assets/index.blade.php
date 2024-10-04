@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Active')
+@section('title', 'Inactive')
 
 @section('content')
     <div class="flex flex-col w-full h-full p-0 m-0 relative">
@@ -23,7 +23,7 @@
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
                             <span class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-black/[0.60] cursor-default dark:text-white/[0.60]">
-                                {{ __('Active') }}
+                                {{ __('Inactive') }}
                             </span>
                         </li>
                     </ol>
@@ -49,13 +49,13 @@
                             <div class="flex-1 block w-auto h-auto p-0 m-0 overflow-hidden relative basis-auto order-1 sm:order-none">
                                 <div class="block w-full h-auto p-0 m-0 relative">
                                     <h6 class="block w-full h-auto px-2 py-1.5 m-0 headline-6 text-black/[0.87] truncate dark:text-white/[0.87]">
-                                        {{ __('All Active') }}
+                                        {{ __('All Inactive') }}
                                     </h6>
                                 </div>
                             </div>
 
                             <div class="block w-auto h-auto p-0 mx-2 mt-2 overflow-hidden relative basis-full order-3 sm:basis-auto sm:order-none">
-                                <form class="block w-auto h-auto p-0 m-0 relative" action="{{ route('active-assets.index') }}" method="GET" autocomplete="off" autocapitalize="off">
+                                <form class="block w-auto h-auto p-0 m-0 relative" action="{{ route('inactive-assets.index') }}" method="GET" autocomplete="off" autocapitalize="off">
 
                                     {{-- Search --}}
                                     <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
@@ -74,21 +74,6 @@
                             </div>
 
                             <div class="flex justify-start items-center gap-2 w-auto h-auto p-0 m-0 overflow-hidden relative basis-auto order-2 sm:order-none">
-                                <div class="inline-block w-auto h-auto p-0 m-0 relative">
-
-                                    {{-- Icon Link --}}
-                                    <div class="block w-auto h-auto p-0 m-0 relative">
-                                        <a href="{{ route('active-assets.create') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Create" data-te-ripple-init data-te-ripple-color="light">
-                                            <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    {{-- End Icon Link --}}
-
-                                </div>
-
                                 <div class="inline-block w-auto h-auto p-0 m-0 relative">
 
                                     {{-- Dropdown --}}
@@ -169,13 +154,10 @@
                                                 {{ __('Code') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Purchase Date') }}
+                                                {{ __('Inactive Date') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Brand & Type') }}
-                                            </th>
-                                            <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Latest History') }}
+                                                {{ __('Reason') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
                                                 {{ __('Action') }}
@@ -205,22 +187,13 @@
                                                     {{ $asset->code }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                    {{ $asset->purchase_date }}
+                                                    {{ $asset->assetArchive?->inactive_date }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                    {{ $asset->brand?->name }} & {{ $asset->type }}
-                                                </td>
-                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                    @if($asset->latestHistory)
-                                                        {{ $asset->latestHistory?->responsiblePerson?->name }}
-                                                        ({{ $asset->latestHistory?->location?->name }},
-                                                        {{ $asset->latestHistory?->date_from }})
-                                                    @else
-                                                        {{ __('N/A') }}
-                                                    @endif
+                                                    {{ $asset->assetArchive?->reason->label() }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
-                                                    <form class="inline-block w-auto h-auto p-0 m-0 relative" action="{{ route('active-assets.destroy', $asset->id) }}" method="POST">
+                                                    <form class="inline-block w-auto h-auto p-0 m-0 relative" action="{{ route('inactive-assets.archive.destroy', $asset->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
 
@@ -235,7 +208,7 @@
 
                                                             <ul class="hidden min-w-[128px] w-auto max-w-[280px] h-auto py-2 m-0 list-none rounded bg-white shadow-08dp absolute top-full right-0 z-10 [&[data-te-dropdown-show]]:block dark:bg-charleston-green" data-te-dropdown-menu-ref>
                                                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                    <a href="{{ route('active-assets.show', $asset->id) }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
+                                                                    <a href="{{ route('inactive-assets.show', $asset->id) }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                                                         <div class="inline-block w-auto h-auto p-0 m-0 relative">
                                                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -252,41 +225,7 @@
                                                                 </li>
 
                                                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                    <a href="{{ route('active-assets.edit', $asset->id) }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
-                                                                        <div class="inline-block w-auto h-auto p-0 m-0 relative">
-                                                                            <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-                                                                            </svg>
-                                                                        </div>
-
-                                                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                            <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                {{ __('Edit') }}
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                     <button type="submit" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none whitespace-nowrap overflow-hidden select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
-                                                                        <div class="inline-block w-auto h-auto p-0 m-0 relative">
-                                                                            <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                                                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
-                                                                            </svg>
-                                                                        </div>
-
-                                                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                            <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                {{ __('Delete') }}
-                                                                            </span>
-                                                                        </div>
-                                                                    </button>
-                                                                </li>
-
-                                                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                    <a href="{{ route('active-assets.archive.create', $asset->id) }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                                                         <div class="inline-block w-auto h-auto p-0 m-0 relative">
                                                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                                                 <path d="M0 0h24v24H0z" fill="none" />
@@ -296,10 +235,10 @@
 
                                                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                             <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                {{ __('Archive') }}
+                                                                                {{ __('Unarchived') }}
                                                                             </span>
                                                                         </div>
-                                                                    </a>
+                                                                    </button>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -310,7 +249,7 @@
                                             </tr>
                                         @empty
                                             <tr class="table-row text-inherit align-middle outline-none relative">
-                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]" colspan="10">
+                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]" colspan="9">
                                                     {{ __('No data available.') }}
                                                 </td>
                                             </tr>

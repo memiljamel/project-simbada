@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -75,6 +76,14 @@ class Asset extends Model
         'photo',
         'notes',
     ];
+
+    /**
+     * Scope a query to only include active asset.
+     */
+    public function scopeActive(Builder $query, bool $active): void
+    {
+        $query->where('active', $active);
+    }
 
     /**
      * Interact with the asset's qrcode url.
@@ -158,5 +167,13 @@ class Asset extends Model
     public function assetFinances(): HasMany
     {
         return $this->hasMany(AssetFinance::class, 'asset_id', 'id');
+    }
+
+    /**
+     * Get the asset archive associated with the asset.
+     */
+    public function assetArchive(): HasOne
+    {
+        return $this->hasOne(AssetArchive::class);
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Distributor;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\UploadedFile;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Asset>
@@ -42,8 +43,12 @@ class AssetFactory extends Factory
             'invoice_number' => fake()->numerify('INV-####'),
             'qty' => fake()->randomDigitNotNull(),
             'unit_price' => fake()->randomNumber(7, true),
-            'photo' => fake()->imageUrl(),
-            'qr_code' => fake()->imageUrl(),
+            'photo' => UploadedFile::fake()
+                ->image('photo.png')
+                ->hashName(),
+            'qr_code' => UploadedFile::fake()
+                ->image('qr-code.png')
+                ->hashName(),
             'notes' => fake()->optional()->paragraph(),
         ];
     }
