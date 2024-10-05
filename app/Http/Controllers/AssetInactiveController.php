@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Asset;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
-class InactiveAssetController extends Controller
+class AssetInactiveController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,7 +40,7 @@ class InactiveAssetController extends Controller
             abort(404);
         }
 
-        return view('inactive-assets.index', compact('assets', 'search'));
+        return view('asset-inactive.index', compact('assets', 'search'));
     }
 
     /**
@@ -45,6 +48,35 @@ class InactiveAssetController extends Controller
      */
     public function show(Asset $asset): View
     {
-        return view('inactive-assets.show', compact('asset'));
+        return view('asset-inactive.show', compact('asset'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Asset $asset): RedirectResponse
+    {
+        DB::transaction(function () use ($asset) {
+            foreach ($asset->assetAttachments as $attachment) {
+                if ($attachment->filename && Storage::disk('public')->exists($attachment->filename)) {
+                    Storage::disk('public')->delete($attachment->filename);
+                }
+
+                $attachment->delete();
+            }
+
+            if ($asset->photo && Storage::disk('public')->exists($asset->photo)) {
+                Storage::disk('public')->delete($asset->photo);
+            }
+
+            if ($asset->qr_code && Storage::disk('public')->exists($asset->qr_code)) {
+                Storage::disk('public')->delete($asset->qr_code);
+            }
+
+            $asset->delete();
+        });
+
+        return redirect()->route('asset-inactive.index')
+            ->with('message', 'The asset has been deleted.');
     }
 }

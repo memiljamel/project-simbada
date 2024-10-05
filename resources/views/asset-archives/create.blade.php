@@ -22,13 +22,13 @@
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
-                            <a href="{{ route('active-assets.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
+                            <a href="{{ route('asset-active.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
                                 {{ __('Active') }}
                             </a>
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
-                            <a href="{{ route('active-assets.show', $asset->id) }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
+                            <a href="{{ route('asset-active.show', $asset->id) }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
                                 {{ $asset->name }}
                             </a>
                         </li>
@@ -45,7 +45,7 @@
                 {{-- Cards --}}
                 <div class="block w-full h-auto p-0 mt-4 bg-white rounded text-black/[0.87] shadow-01dp overflow-hidden dark:bg-charleston-green">
 
-                    <form action="{{ route('active-assets.archive.store', $asset->id) }}" method="POST" autocomplete="off" autocapitalize="off">
+                    <form action="{{ route('asset-active.archives.store', $asset->id) }}" method="POST" autocomplete="off" autocapitalize="off">
                         @csrf
                         @method('POST')
 
@@ -56,7 +56,7 @@
 
                                     {{-- Icon Link --}}
                                     <div class="inline-block w-auto h-auto p-0 m-0 relative">
-                                        <a href="{{ route('active-assets.index') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Back" data-te-ripple-init data-te-ripple-color="light">
+                                        <a href="{{ route('asset-active.index') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Back" data-te-ripple-init data-te-ripple-color="light">
                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                 <path d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>

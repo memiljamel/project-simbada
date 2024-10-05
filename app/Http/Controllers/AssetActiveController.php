@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
-class ActiveAssetController extends Controller
+class AssetActiveController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -51,7 +51,7 @@ class ActiveAssetController extends Controller
             abort(404);
         }
 
-        return view('active-assets.index', compact('assets', 'search'));
+        return view('asset-active.index', compact('assets', 'search'));
     }
 
     /**
@@ -72,7 +72,7 @@ class ActiveAssetController extends Controller
             ->pluck('name')
             ->toArray();
 
-        return view('active-assets.create', compact('categories', 'brands', 'distributors'));
+        return view('asset-active.create', compact('categories', 'brands', 'distributors'));
     }
 
     /**
@@ -144,7 +144,7 @@ class ActiveAssetController extends Controller
             }
         });
 
-        return redirect()->route('active-assets.index')
+        return redirect()->route('asset-active.index')
             ->with('message', 'The asset has been created.');
     }
 
@@ -153,7 +153,7 @@ class ActiveAssetController extends Controller
      */
     public function show(Asset $asset): View
     {
-        return view('active-assets.show', compact('asset'));
+        return view('asset-active.show', compact('asset'));
     }
 
     /**
@@ -174,7 +174,7 @@ class ActiveAssetController extends Controller
             ->pluck('name')
             ->toArray();
 
-        return view('active-assets.edit', compact('asset', 'categories', 'brands', 'distributors'));
+        return view('asset-active.edit', compact('asset', 'categories', 'brands', 'distributors'));
     }
 
     /**
@@ -248,7 +248,7 @@ class ActiveAssetController extends Controller
             }
         });
 
-        return redirect()->route('active-assets.index')
+        return redirect()->route('asset-active.index')
             ->with('message', 'The asset has been updated.');
     }
 
@@ -277,7 +277,7 @@ class ActiveAssetController extends Controller
             $asset->delete();
         });
 
-        return redirect()->route('active-assets.index')
+        return redirect()->route('asset-active.index')
             ->with('message', 'The asset has been deleted.');
     }
 }

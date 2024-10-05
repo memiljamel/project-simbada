@@ -66,26 +66,25 @@
                             </div>
 
                             <div class="flex justify-start items-center gap-2 w-auto h-auto p-0 m-0 overflow-hidden relative">
-                                <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('asset-histories.destroy', $history->id) }}" method="POST" autocomplete="off" autocapitalize="off">
-                                    @csrf
-                                    @method('DELETE')
+                                <div class="inline-block w-auto h-auto p-0 m-0 relative">
 
-                                    <div class="inline-block w-auto h-auto p-0 m-0 relative">
-
-                                        {{-- Icon Link --}}
-                                        <div class="block w-auto h-auto p-0 m-0 relative">
-                                            <a href="{{ route('asset-histories.edit', $history->id) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Edit" data-te-ripple-init data-te-ripple-color="light">
-                                                <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                    <path d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                        {{-- End Icon Link --}}
-
+                                    {{-- Icon Link --}}
+                                    <div class="block w-auto h-auto p-0 m-0 relative">
+                                        <a href="{{ route('asset-histories.edit', $history->id) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Edit" data-te-ripple-init data-te-ripple-color="light">
+                                            <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                                            </svg>
+                                        </a>
                                     </div>
+                                    {{-- End Icon Link --}}
 
-                                    <div class="inline-block w-auto h-auto p-0 m-0 relative">
+                                </div>
+
+                                <div class="inline-block w-auto h-auto p-0 m-0 relative">
+                                    <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('asset-histories.destroy', $history->id) }}" method="POST" autocomplete="off" autocapitalize="off">
+                                        @csrf
+                                        @method('DELETE')
 
                                         {{-- Icon Button --}}
                                         <div class="block w-auto h-auto p-0 m-0 relative">
@@ -98,9 +97,8 @@
                                         </div>
                                         {{-- End Icon Button --}}
 
-                                    </div>
-
-                                </form>
+                                    </form>
+                                </div>
                             </div>
 
                         </div>
