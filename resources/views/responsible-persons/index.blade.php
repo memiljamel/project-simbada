@@ -161,9 +161,7 @@
                                                     {{ $person->assetHistories->count() }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
-                                                    <form class="inline-block w-auto h-auto p-0 m-0 relative" action="{{ route('responsible-persons.destroy', $person->id) }}" method="POST" autocomplete="off" autocapitalize="off">
-                                                        @csrf
-                                                        @method('DELETE')
+                                                    <div class="inline-block w-auto h-auto p-0 m-0 relative">
 
                                                         {{-- Dropdown --}}
                                                         <div class="block w-auto h-auto p-0 m-0 relative" data-te-dropdown-ref>
@@ -210,26 +208,31 @@
                                                                 </li>
 
                                                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                    <button type="submit" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none whitespace-nowrap overflow-hidden select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
-                                                                        <div class="inline-block w-auto h-auto p-0 m-0 relative">
-                                                                            <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                                                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
-                                                                            </svg>
-                                                                        </div>
+                                                                    <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('responsible-persons.destroy', $person->id) }}" method="POST" autocomplete="off" autocapitalize="off">
+                                                                        @csrf
+                                                                        @method('DELETE')
 
-                                                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                            <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                {{ __('Delete') }}
-                                                                            </span>
-                                                                        </div>
-                                                                    </button>
+                                                                        <button type="submit" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none whitespace-nowrap overflow-hidden select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
+                                                                            <div class="inline-block w-auto h-auto p-0 m-0 relative">
+                                                                                <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                                                                                    <path d="M0 0h24v24H0z" fill="none" />
+                                                                                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                                                                                </svg>
+                                                                            </div>
+
+                                                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
+                                                                                <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
+                                                                                    {{ __('Delete') }}
+                                                                                </span>
+                                                                            </div>
+                                                                        </button>
+                                                                    </form>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                         {{-- End Dropdown --}}
 
-                                                    </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @empty

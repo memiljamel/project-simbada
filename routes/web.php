@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\ActiveAssetController;
+use App\Http\Controllers\AssetActiveController;
 use App\Http\Controllers\AssetArchiveController;
 use App\Http\Controllers\AssetFinanceController;
 use App\Http\Controllers\AssetHistoryController;
+use App\Http\Controllers\AssetInactiveController;
 use App\Http\Controllers\Auth\ForgotController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -11,7 +12,6 @@ use App\Http\Controllers\Auth\ResetController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DistributorController;
-use App\Http\Controllers\InactiveAssetController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ResponsiblePersonController;
 use Illuminate\Support\Facades\Route;
@@ -53,33 +53,39 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware(['auth', 'verified', 'auth.session'])->group(function () {
-    Route::controller(AssetArchiveController::class)->group(function () {
-        Route::get('active-assets/{asset}/archive', 'create')
-            ->name('active-assets.archive.create');
-        Route::post('active-assets/{asset}/archive/create', 'store')
-            ->name('active-assets.archive.store');
-        Route::delete('inactive-assets/{asset}/unarchived', 'destroy')
-            ->name('inactive-assets.archive.destroy');
+    Route::prefix('assets')->group(function () {
+        Route::controller(AssetArchiveController::class)->group(function () {
+            Route::get('{asset}/archives/create', 'create')
+                ->name('asset-active.archives.create');
+            Route::post('{asset}/archives', 'store')
+                ->name('asset-active.archives.store');
+            Route::delete('{asset}/archives', 'destroy')
+                ->name('asset-inactive.archives.destroy');
+        });
+
+        Route::controller(AssetInactiveController::class)->group(function () {
+            Route::get('inactive', 'index')
+                ->name('asset-inactive.index');
+            Route::get('{asset}/inactive', 'show')
+                ->name('asset-inactive.show');
+            Route::delete('{asset}/inactive', 'destroy')
+                ->name('asset-inactive.destroy');
+        });
+
+        Route::resource('histories', AssetHistoryController::class)
+            ->names('asset-histories');
+        Route::resource('finances', AssetFinanceController::class)
+            ->names('asset-finances');
     });
 
-    Route::resources([
-        'categories' => CategoryController::class,
-        'brands' => BrandController::class,
-        'distributors' => DistributorController::class,
-        'locations' => LocationController::class,
-    ]);
-
-    Route::resource('active-assets', ActiveAssetController::class)
-        ->parameters(['active-assets' => 'asset']);
-    Route::resource('asset-histories', AssetHistoryController::class)
-        ->parameters(['asset-histories' => 'history']);
-    Route::resource('asset-finances', AssetFinanceController::class)
-        ->parameters(['asset-finances' => 'finance']);
+    Route::resource('assets', AssetActiveController::class)
+        ->names('asset-active');
+    Route::resource('categories', CategoryController::class);
+    Route::resource('brands', BrandController::class);
+    Route::resource('distributors', DistributorController::class);
     Route::resource('responsible-persons', ResponsiblePersonController::class)
         ->parameters(['responsible-persons' => 'person']);
-    Route::resource('inactive-assets', InactiveAssetController::class)
-        ->parameters(['inactive-assets' => 'asset'])
-        ->only(['index', 'show']);
+    Route::resource('locations', LocationController::class);
 
     Route::prefix('auth')->group(function () {
         Route::delete('logout', LogoutController::class)

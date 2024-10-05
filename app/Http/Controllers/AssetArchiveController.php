@@ -36,7 +36,7 @@ class AssetArchiveController extends Controller
             $archive->save();
         });
 
-        return redirect()->route('inactive-assets.index')
+        return redirect()->route('asset-inactive.index')
             ->with('message', 'The asset has been archived.');
     }
 
@@ -52,7 +52,7 @@ class AssetArchiveController extends Controller
             $asset->assetArchive()->delete();
         });
 
-        return redirect()->route('active-assets.index')
+        return redirect()->route('asset-active.index')
             ->with('message', 'The asset has been unarchived.');
     }
 }
