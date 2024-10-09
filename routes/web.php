@@ -13,6 +13,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ResponsiblePersonController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -77,6 +78,13 @@ Route::middleware(['auth', 'verified', 'auth.session'])->group(function () {
             ->names('asset-histories');
         Route::resource('finances', AssetFinanceController::class)
             ->names('asset-finances');
+    });
+
+    Route::controller(PrintController::class)->group(function () {
+        Route::get('prints', 'index')
+            ->name('prints.index');
+        Route::post('prints', 'store')
+            ->name('prints.store');
     });
 
     Route::resource('assets', AssetActiveController::class)
