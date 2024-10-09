@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use App\Http\Requests\StoreDistributorRequest;
 use App\Http\Requests\UpdateDistributorRequest;
 use App\Models\Distributor;
@@ -12,6 +14,15 @@ use Illuminate\View\View;
 
 class DistributorController extends Controller
 {
+    /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('role:'.RoleEnum::Administrator->value.'|'.RoleEnum::Custom->value);
+        $this->middleware('permission:'.PermissionEnum::CrudDistributors->value);
+    }
+
     /**
      * Display a listing of the resource.
      */

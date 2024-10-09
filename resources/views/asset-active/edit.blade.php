@@ -529,7 +529,7 @@
 
                                             </div>
 
-                                            @error('attachments.*')
+                                            @error('attachments')
                                                 <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
                                                     {{ $message }}
                                                 </span>

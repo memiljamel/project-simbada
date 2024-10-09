@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use App\Http\Requests\StoreAssetArchiveRequest;
 use App\Models\Asset;
 use App\Models\AssetArchive;
@@ -11,6 +13,16 @@ use Illuminate\View\View;
 
 class AssetArchiveController extends Controller
 {
+    /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('role:'.RoleEnum::Administrator->value.'|'.RoleEnum::Custom->value);
+        $this->middleware('permission:'.PermissionEnum::ArchiveAssets->value)->only(['create', 'store']);
+        $this->middleware('permission:'.PermissionEnum::UnarchivedAssets->value)->only(['destroy']);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

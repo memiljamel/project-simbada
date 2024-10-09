@@ -7,12 +7,12 @@ enum FinanceTypeEnum: string
     /**
      * define the type of feedback as income.
      */
-    case INCOME = 'income';
+    case Income = 'income';
 
     /**
      * define the type of feedback as expense.
      */
-    case EXPENSE = 'expense';
+    case Expense = 'expense';
 
     /**
      * Get the label for the finance type enum.
@@ -20,8 +20,8 @@ enum FinanceTypeEnum: string
     public function label(): string
     {
         return match ($this) {
-            FinanceTypeEnum::INCOME => __('Income'),
-            FinanceTypeEnum::EXPENSE => __('Expense'),
+            FinanceTypeEnum::Income => __('Income'),
+            FinanceTypeEnum::Expense => __('Expense'),
         };
     }
 }

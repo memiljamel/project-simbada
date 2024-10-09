@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -55,6 +57,9 @@ class UserFactory extends Factory
             'name' => 'Administrator',
             'email' => 'admin@domain.com',
             'password' => '$2y$10$5j57vMDvrRtyabOrwf7agecaF6vOe5ntE2qAyWAEN2zxapZQw7Fta', // aB3@fR8$9Jp
-        ]);
+        ])->afterCreating(function (User $user) {
+            $user->givePermissions(PermissionEnum::cases());
+            $user->addRoles(RoleEnum::cases());
+        });
     }
 }

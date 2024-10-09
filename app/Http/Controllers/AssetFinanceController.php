@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use App\Http\Requests\StoreAssetFinanceRequest;
 use App\Http\Requests\UpdateAssetFinanceRequest;
 use App\Models\Asset;
@@ -13,6 +15,18 @@ use Illuminate\View\View;
 
 class AssetFinanceController extends Controller
 {
+    /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('role:'.RoleEnum::Administrator->value.'|'.RoleEnum::Custom->value);
+        $this->middleware('permission:'.PermissionEnum::ReadAssetFinances->value)->only(['index', 'show']);
+        $this->middleware('permission:'.PermissionEnum::CreateAssetFinances->value)->only(['create', 'store']);
+        $this->middleware('permission:'.PermissionEnum::UpdateAssetFinances->value)->only(['edit', 'update']);
+        $this->middleware('permission:'.PermissionEnum::DeleteAssetFinances->value)->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -27,7 +41,8 @@ class AssetFinanceController extends Controller
                     ->orWhere('date', 'LIKE', "%{$search}%")
                     ->orWhere('amount', 'LIKE', "%{$search}%")
                     ->orWhereHas('asset', function (Builder $query) use ($search) {
-                        $query->where('name', 'LIKE', "%{$search}%");
+                        $query->where('active', true)
+                            ->orWhere('name', 'LIKE', "%{$search}%");
                     });
             })
             ->latest()
@@ -47,7 +62,7 @@ class AssetFinanceController extends Controller
     public function create(): View
     {
         $assets = Asset::select(['id', 'name'])
-            ->where('name', '!=', 'None')
+            ->active(true)
             ->orderBy('name')
             ->get();
 
@@ -85,7 +100,7 @@ class AssetFinanceController extends Controller
     public function edit(AssetFinance $finance): View
     {
         $assets = Asset::select(['id', 'name'])
-            ->where('name', '!=', 'None')
+            ->active(true)
             ->orderBy('name')
             ->get();
 

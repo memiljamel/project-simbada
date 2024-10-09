@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use App\Http\Requests\StoreAssetRequest;
 use App\Http\Requests\UpdateAssetRequest;
 use App\Models\Asset;
@@ -19,6 +21,18 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AssetActiveController extends Controller
 {
+    /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('role:'.RoleEnum::Administrator->value.'|'.RoleEnum::Custom->value);
+        $this->middleware('permission:'.PermissionEnum::ReadAssets->value)->only(['index', 'show']);
+        $this->middleware('permission:'.PermissionEnum::CreateAssets->value)->only(['create', 'store']);
+        $this->middleware('permission:'.PermissionEnum::UpdateAssets->value)->only(['edit', 'update']);
+        $this->middleware('permission:'.PermissionEnum::DeleteAssets->value)->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      */
