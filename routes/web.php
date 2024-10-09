@@ -14,6 +14,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ResponsiblePersonController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,12 +81,16 @@ Route::middleware(['auth', 'verified', 'auth.session'])->group(function () {
 
     Route::resource('assets', AssetActiveController::class)
         ->names('asset-active');
-    Route::resource('categories', CategoryController::class);
-    Route::resource('brands', BrandController::class);
-    Route::resource('distributors', DistributorController::class);
     Route::resource('responsible-persons', ResponsiblePersonController::class)
         ->parameters(['responsible-persons' => 'person']);
-    Route::resource('locations', LocationController::class);
+
+    Route::resources([
+        'categories' => CategoryController::class,
+        'brands' => BrandController::class,
+        'distributors' => DistributorController::class,
+        'locations' => LocationController::class,
+        'users' => UserController::class,
+    ]);
 
     Route::prefix('auth')->group(function () {
         Route::delete('logout', LogoutController::class)

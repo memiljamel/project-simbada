@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use App\Http\Requests\StoreAssetHistoryRequest;
 use App\Http\Requests\UpdateAssetHistoryRequest;
 use App\Models\Asset;
@@ -17,6 +19,18 @@ use Illuminate\View\View;
 class AssetHistoryController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('role:'.RoleEnum::Administrator->value.'|'.RoleEnum::Custom->value);
+        $this->middleware('permission:'.PermissionEnum::ReadAssetHistories->value)->only(['index', 'show']);
+        $this->middleware('permission:'.PermissionEnum::CreateAssetHistories->value)->only(['create', 'store']);
+        $this->middleware('permission:'.PermissionEnum::UpdateAssetHistories->value)->only(['edit', 'update']);
+        $this->middleware('permission:'.PermissionEnum::DeleteAssetHistories->value)->only(['destroy']);
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index(Request $request): View
@@ -31,7 +45,8 @@ class AssetHistoryController extends Controller
                     ->orWhere('condition_percentage', 'LIKE', "%{$search}%")
                     ->orWhere('completeness_percentage', 'LIKE', "%{$search}%")
                     ->orWhereHas('asset', function (Builder $query) use ($search) {
-                        $query->where('name', 'LIKE', "%{$search}%");
+                        $query->where('active', true)
+                            ->orWhere('name', 'LIKE', "%{$search}%");
                     })
                     ->orWhereHas('responsiblePerson', function (Builder $query) use ($search) {
                         $query->where('name', 'LIKE', "%{$search}%");
@@ -57,7 +72,7 @@ class AssetHistoryController extends Controller
     public function create(): View
     {
         $assets = Asset::select(['id', 'name'])
-            ->where('name', '!=', 'None')
+            ->active(true)
             ->orderBy('name')
             ->get();
 
@@ -116,7 +131,7 @@ class AssetHistoryController extends Controller
     public function edit(AssetHistory $history): View
     {
         $assets = Asset::select(['id', 'name'])
-            ->where('name', '!=', 'None')
+            ->active(true)
             ->orderBy('name')
             ->get();
 

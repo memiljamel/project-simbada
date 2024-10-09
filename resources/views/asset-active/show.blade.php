@@ -65,56 +65,68 @@
                                 </div>
                             </div>
 
-                            <div class="flex justify-start items-center gap-2 w-auto h-auto p-0 m-0 overflow-hidden relative">
-                                <div class="inline-block w-auto h-auto p-0 m-0 relative">
+                            @ability(App\Enums\RoleEnum::Administrator->value, [
+                                App\Enums\PermissionEnum::UpdateAssets->value,
+                                App\Enums\PermissionEnum::DeleteAssets->value,
+                                App\Enums\PermissionEnum::ArchiveAssets->value,
+                            ])
+                                <div class="flex justify-start items-center gap-2 w-auto h-auto p-0 m-0 overflow-hidden relative">
+                                    @permission(App\Enums\PermissionEnum::UpdateAssets->value)
+                                        <div class="inline-block w-auto h-auto p-0 m-0 relative">
 
-                                    {{-- Icon Link --}}
-                                    <div class="block w-auto h-auto p-0 m-0 relative">
-                                        <a href="{{ route('asset-active.edit', $asset->id) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Edit" data-te-ripple-init data-te-ripple-color="light">
-                                            <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    {{-- End Icon Link --}}
+                                            {{-- Icon Link --}}
+                                            <div class="block w-auto h-auto p-0 m-0 relative">
+                                                <a href="{{ route('asset-active.edit', $asset->id) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Edit" data-te-ripple-init data-te-ripple-color="light">
+                                                    <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            {{-- End Icon Link --}}
 
-                                </div>
-
-                                <div class="inline-block w-auto h-auto p-0 m-0 relative">
-                                    <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('asset-active.destroy', $asset->id) }}" method="POST" autocomplete="off" autocapitalize="off">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        {{-- Icon Button --}}
-                                        <div class="block w-auto h-auto p-0 m-0 relative">
-                                            <button type="submit" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-toggle="tooltip" title="Delete" data-te-ripple-init data-te-ripple-color="light">
-                                                <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                    <path d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
-                                                </svg>
-                                            </button>
                                         </div>
-                                        {{-- End Icon Button --}}
+                                    @endpermission
 
-                                    </form>
+                                    @permission(App\Enums\PermissionEnum::DeleteAssets->value)
+                                        <div class="inline-block w-auto h-auto p-0 m-0 relative">
+                                            <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('asset-active.destroy', $asset->id) }}" method="POST" autocomplete="off" autocapitalize="off">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                {{-- Icon Button --}}
+                                                <div class="block w-auto h-auto p-0 m-0 relative">
+                                                    <button type="submit" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-toggle="tooltip" title="Delete" data-te-ripple-init data-te-ripple-color="light">
+                                                        <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                                                            <path d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                {{-- End Icon Button --}}
+
+                                            </form>
+                                        </div>
+                                    @endpermission
+
+                                    @permission(App\Enums\PermissionEnum::ArchiveAssets->value)
+                                        <div class="inline-block w-auto h-auto p-0 m-0 relative">
+
+                                            {{-- Icon Button --}}
+                                            <div class="block w-auto h-auto p-0 m-0 relative">
+                                                <a href="{{ route('asset-active.archives.create', $asset->id) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Archive" data-te-ripple-init data-te-ripple-color="light">
+                                                    <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            {{-- End Icon Button --}}
+
+                                        </div>
+                                    @endpermission
                                 </div>
-
-                                <div class="inline-block w-auto h-auto p-0 m-0 relative">
-
-                                    {{-- Icon Button --}}
-                                    <div class="block w-auto h-auto p-0 m-0 relative">
-                                        <a href="{{ route('asset-active.archives.create', $asset->id) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Archive" data-te-ripple-init data-te-ripple-color="light">
-                                            <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    {{-- End Icon Button --}}
-
-                                </div>
-                            </div>
+                            @endability
 
                         </div>
                     </div>

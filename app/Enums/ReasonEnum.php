@@ -7,32 +7,32 @@ enum ReasonEnum: string
     /**
      * define the reason as sold.
      */
-    case SOLD = 'sold';
+    case Sold = 'sold';
 
     /**
      * define the reason as donated.
      */
-    case DONATED = 'donated';
+    case Donated = 'donated';
 
     /**
      * define the reason as discarded.
      */
-    case DISCARDED = 'discarded';
+    case Discarded = 'discarded';
 
     /**
      * define the reason as lost.
      */
-    case LOST = 'lost';
+    case Lost = 'lost';
 
     /**
-     * define the reason as completely demaged.
+     * define the reason as completely damaged.
      */
-    case COMPLETELY_DAMAGED = 'completely_damaged';
+    case CompletelyDamaged = 'completely_damaged';
 
     /**
      * define the reason as others.
      */
-    case OTHERS = 'others';
+    case Others = 'others';
 
     /**
      * Get the label for the reason enum.
@@ -40,12 +40,12 @@ enum ReasonEnum: string
     public function label(): string
     {
         return match ($this) {
-            ReasonEnum::SOLD => __('Sold'),
-            ReasonEnum::DONATED => __('Donated'),
-            ReasonEnum::DISCARDED => __('Discarded'),
-            ReasonEnum::LOST => __('Lost'),
-            ReasonEnum::COMPLETELY_DAMAGED => __('Completely Damaged'),
-            ReasonEnum::OTHERS => __('Others'),
+            ReasonEnum::Sold => __('Sold'),
+            ReasonEnum::Donated => __('Donated'),
+            ReasonEnum::Discarded => __('Discarded'),
+            ReasonEnum::Lost => __('Lost'),
+            ReasonEnum::CompletelyDamaged => __('Completely Damaged'),
+            ReasonEnum::Others => __('Others'),
         };
     }
 }

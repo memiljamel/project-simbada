@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Finances')
+@section('title', 'Users')
 
 @section('content')
     <div class="flex flex-col w-full h-full p-0 m-0 relative">
@@ -22,14 +22,14 @@
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
-                            <a href="{{ route('asset-finances.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
-                                {{ __('Finances') }}
+                            <a href="{{ route('users.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
+                                {{ __('Users') }}
                             </a>
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
                             <span class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-black/[0.60] cursor-default dark:text-white/[0.60]">
-                                {{ $finance->asset?->name }}
+                                {{ $user->name }}
                             </span>
                         </li>
                     </ol>
@@ -46,7 +46,7 @@
 
                                 {{-- Icon Button --}}
                                 <div class="inline-block w-auto h-auto p-0 m-0 relative">
-                                    <a href="{{ route('asset-finances.index') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Back" data-te-ripple-init data-te-ripple-color="light">
+                                    <a href="{{ route('users.index') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Back" data-te-ripple-init data-te-ripple-color="light">
                                         <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                             <path d="M0 0h24v24H0z" fill="none" />
                                             <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
@@ -65,50 +65,41 @@
                                 </div>
                             </div>
 
-                            @ability(App\Enums\RoleEnum::Administrator->value, [
-                                App\Enums\PermissionEnum::UpdateAssetFinances->value,
-                                App\Enums\PermissionEnum::DeleteAssetFinances->value,
-                            ])
-                                <div class="flex justify-start items-center gap-2 w-auto h-auto p-0 m-0 overflow-hidden relative">
-                                    @permission(App\Enums\PermissionEnum::UpdateAssetFinances->value)
-                                        <div class="inline-block w-auto h-auto p-0 m-0 relative">
+                            <div class="flex justify-start items-center gap-2 w-auto h-auto p-0 m-0 overflow-hidden relative">
+                                <div class="inline-block w-auto h-auto p-0 m-0 relative">
 
-                                            {{-- Icon Link --}}
-                                            <div class="block w-auto h-auto p-0 m-0 relative">
-                                                <a href="{{ route('asset-finances.edit', $finance->id) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Edit" data-te-ripple-init data-te-ripple-color="light">
-                                                    <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                        <path d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            {{-- End Icon Link --}}
+                                    {{-- Icon Link --}}
+                                    <div class="block w-auto h-auto p-0 m-0 relative">
+                                        <a href="{{ route('users.edit', $user->id) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Edit" data-te-ripple-init data-te-ripple-color="light">
+                                            <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    {{-- End Icon Link --}}
 
-                                        </div>
-                                    @endpermission
-
-                                    @permission(App\Enums\PermissionEnum::DeleteAssetFinances->value)
-                                        <div class="inline-block w-auto h-auto p-0 m-0 relative">
-                                            <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('asset-finances.destroy', $finance->id) }}" method="POST" autocomplete="off" autocapitalize="off">
-                                                @csrf
-                                                @method('DELETE')
-
-                                                {{-- Icon Button --}}
-                                                <div class="block w-auto h-auto p-0 m-0 relative">
-                                                    <button type="submit" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-toggle="tooltip" title="Delete" data-te-ripple-init data-te-ripple-color="light">
-                                                        <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                                            <path d="M0 0h24v24H0z" fill="none" />
-                                                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                                {{-- End Icon Button --}}
-
-                                            </form>
-                                        </div>
-                                    @endpermission
                                 </div>
-                            @endability
+
+                                <div class="inline-block w-auto h-auto p-0 m-0 relative">
+                                    <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('users.destroy', $user->id) }}" method="POST" autocomplete="off" autocapitalize="off">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        {{-- Icon Button --}}
+                                        <div class="block w-auto h-auto p-0 m-0 relative">
+                                            <button type="submit" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-toggle="tooltip" title="Delete" data-te-ripple-init data-te-ripple-color="light">
+                                                <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                                                    <path d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        {{-- End Icon Button --}}
+
+                                    </form>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -127,7 +118,7 @@
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $finance->id }}
+                                                {{ $user->id }}
                                             </span>
                                         </div>
                                     </div>
@@ -137,13 +128,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Asset Name') }}
+                                                {{ __('Name') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $finance->asset?->name }}
+                                                {{ $user->name }}
                                             </span>
                                         </div>
                                     </div>
@@ -153,13 +144,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Type') }}
+                                                {{ __('Email') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $finance->type->label() }}
+                                                {{ $user->email }}
                                             </span>
                                         </div>
                                     </div>
@@ -169,13 +160,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Date') }}
+                                                {{ __('Description') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $finance->date }}
+                                                {{ $user->description }}
                                             </span>
                                         </div>
                                     </div>
@@ -185,13 +176,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Amount') }}
+                                                {{ __('Roles') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ Number::currency($finance->amount, in: 'IDR', locale: 'id') }}
+                                                {{ App\Enums\RoleEnum::Custom->label() }}
                                             </span>
                                         </div>
                                     </div>
@@ -201,13 +192,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Notes') }}
+                                                {{ __('Total Permissions') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $finance->notes }}
+                                                {{ $user->permissions?->count() }}
                                             </span>
                                         </div>
                                     </div>
@@ -223,7 +214,7 @@
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $finance->created_at }}
+                                                {{ $user->created_at }}
                                             </span>
                                         </div>
                                     </div>
@@ -239,7 +230,7 @@
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $finance->updated_at }}
+                                                {{ $user->updated_at }}
                                             </span>
                                         </div>
                                     </div>

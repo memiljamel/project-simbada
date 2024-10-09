@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use App\Models\Asset;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
@@ -12,6 +14,16 @@ use Illuminate\View\View;
 
 class AssetInactiveController extends Controller
 {
+    /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('role:'.RoleEnum::Administrator->value.'|'.RoleEnum::Custom->value);
+        $this->middleware('permission:'.PermissionEnum::ReadAssets->value)->only(['index', 'show']);
+        $this->middleware('permission:'.PermissionEnum::DeleteAssets->value)->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      */
