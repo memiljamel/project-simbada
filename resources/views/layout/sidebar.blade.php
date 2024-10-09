@@ -239,6 +239,25 @@
 
                 @ability(App\Enums\RoleEnum::Administrator->value, App\Enums\PermissionEnum::CreatePrints->value)
                     <ul class="block w-full py-2 pr-2 m-0 list-none shadow-none border-t border-solid border-chinese-white dark:border-dark-liver relative">
+                        @permission(App\Enums\PermissionEnum::CreatePrints->value)
+                            <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
+                                <a href="{{ route('prints.index') }}" class="group flex justify-between items-center gap-4 w-full h-12 py-3 px-5 m-0 text-black/[0.60] rounded-r-full no-underline outline-none whitespace-nowrap overflow-hidden select-none relative hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] open:bg-primary/[0.04] open:text-primary open:hover:bg-primary/[0.04] open:active:bg-primary/[0.10] open:focus:bg-primary/[0.12] dark:open:bg-primary dark:open:text-black dark:open:hover:bg-primary dark:open:active:bg-primary dark:open:focus:bg-primary" data-te-ripple-init data-te-ripple-color="light" @if (request()->routeIs('prints.*')) open @endif>
+                                    <div class="inline-block min-w-[24px] w-auto h-auto p-0 m-0 relative">
+                                        <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                                            <path d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" />
+                                        </svg>
+                                    </div>
+
+                                    <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
+                                        <span class="block w-full h-auto p-0 m-0 subtitle-1 text-black/[0.87] text-left truncate dark:text-white/[0.87] group-open:text-primary dark:group-open:text-black">
+                                            {{ __('Prints') }}
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                        @endpermission
+
                         @role(App\Enums\RoleEnum::Administrator->value)
                             <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
                                 <a href="{{ route('users.index') }}" class="group flex justify-between items-center gap-4 w-full h-12 py-3 px-5 m-0 text-black/[0.60] rounded-r-full no-underline outline-none whitespace-nowrap overflow-hidden select-none relative hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] open:bg-primary/[0.04] open:text-primary open:hover:bg-primary/[0.04] open:active:bg-primary/[0.10] open:focus:bg-primary/[0.12] dark:open:bg-primary dark:open:text-black dark:open:hover:bg-primary dark:open:active:bg-primary dark:open:focus:bg-primary" data-te-ripple-init data-te-ripple-color="light" @if (request()->routeIs('users.*')) open @endif>
