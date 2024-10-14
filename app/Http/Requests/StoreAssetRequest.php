@@ -45,7 +45,7 @@ class StoreAssetRequest extends FormRequest
                 'nullable',
                 'image',
                 'max:1024',
-                'mimes:jpg,jpeg,png',
+                'mimes:jpeg,png',
             ],
             'brand' => [
                 'required',
@@ -121,7 +121,6 @@ class StoreAssetRequest extends FormRequest
             'attachments.*' => [
                 'nullable',
                 'file',
-                'max:1024',
             ],
             'notes' => [
                 'nullable',

@@ -12,6 +12,7 @@ use Spatie\LaravelPdf\Enums\Format;
 use Spatie\LaravelPdf\Enums\Orientation;
 use Spatie\LaravelPdf\Enums\Unit;
 use Spatie\LaravelPdf\PdfBuilder;
+
 use function Spatie\LaravelPdf\Support\pdf;
 
 class PrintController extends Controller
@@ -21,8 +22,8 @@ class PrintController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('role:' . RoleEnum::Administrator->value . '|' . RoleEnum::Custom->value);
-        $this->middleware('permission:' . PermissionEnum::CreatePrints->value);
+        $this->middleware('role:'.RoleEnum::Administrator->value.'|'.RoleEnum::Custom->value);
+        $this->middleware('permission:'.PermissionEnum::CreatePrints->value);
     }
 
     /**
@@ -69,6 +70,6 @@ class PrintController extends Controller
             ->orientation(Orientation::Portrait)
             ->format(Format::A4)
             ->margins(56, 16, 56, 16, Unit::Pixel)
-            ->name(time() . "- {$asset->name}.pdf");
+            ->name(time()."- {$asset->name}.pdf");
     }
 }

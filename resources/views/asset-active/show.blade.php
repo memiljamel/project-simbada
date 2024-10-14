@@ -403,7 +403,7 @@
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->qty }} {{ __('Unit') }}
+                                                {{ $asset->qty . __('Unit') }}
                                             </span>
                                         </div>
                                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -55,6 +56,14 @@ class Category extends Model
         'name',
         'description',
     ];
+
+    /**
+     * Scope a query to only include without none name.
+     */
+    public function scopeWithoutNoneName(Builder $query): void
+    {
+        $query->whereNot('name', 'None');
+    }
 
     /**
      * Get the assets for the category.

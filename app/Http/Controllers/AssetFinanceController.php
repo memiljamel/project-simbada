@@ -41,8 +41,7 @@ class AssetFinanceController extends Controller
                     ->orWhere('date', 'LIKE', "%{$search}%")
                     ->orWhere('amount', 'LIKE', "%{$search}%")
                     ->orWhereHas('asset', function (Builder $query) use ($search) {
-                        $query->where('active', true)
-                            ->orWhere('name', 'LIKE', "%{$search}%");
+                        $query->where('name', 'LIKE', "%{$search}%");
                     });
             })
             ->latest()

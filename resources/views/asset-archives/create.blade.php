@@ -45,7 +45,7 @@
                 {{-- Cards --}}
                 <div class="block w-full h-auto p-0 mt-4 bg-white rounded text-black/[0.87] shadow-01dp overflow-hidden dark:bg-charleston-green">
 
-                    <form action="{{ route('asset-active.archives.store', $asset->id) }}" method="POST" autocomplete="off" autocapitalize="off">
+                    <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('asset-active.archives.store', $asset->id) }}" method="POST" autocomplete="off" autocapitalize="off">
                         @csrf
                         @method('POST')
 
@@ -82,19 +82,19 @@
                             <div class="block w-full max-w-3xl h-auto p-0 m-0 relative">
                                 <div class="flex flex-col flex-grow-0 gap-0 w-full h-auto p-0 m-0 relative">
 
-                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-2 mt-2 relative sm:flex-row first:mt-0 last:mb-0">
+                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-4 mt-0 relative sm:flex-row first:mt-0 last:mb-0">
                                         <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
-                                            <div class="block w-auto h-auto p-0 mb-2 relative">
+                                            <div class="block w-auto h-auto p-0 mb-0 relative">
 
                                                 {{-- Input --}}
                                                 <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init data-te-datepicker-init>
-                                                    <input type="text" class="peer caret-primary block min-h-[48px] w-full border-0 bg-transparent pt-3 pb-2 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('inactive_date') is-invalid @enderror" id="inactive_date" name="inactive_date" value="{{ old('inactive_date') }}" autocomplete="off" autocapitalize="off" data-te-datepicker-toggle-ref data-te-datepicker-toggle-button-ref autofocus />
+                                                    <input type="text" class="peer caret-primary block min-h-[48px] w-full rounded border-0 bg-transparent pl-3 pr-11 py-3 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('inactive_date') is-invalid @enderror" id="inactive_date" name="inactive_date" value="{{ old('inactive_date') }}" autocomplete="off" autocapitalize="off" data-te-datepicker-toggle-ref data-te-datepicker-toggle-button-ref autofocus />
 
-                                                    <label class="pointer-events-none absolute top-0 left-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-3 leading-[1.6] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.25rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.25rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="inactive_date">
+                                                    <label class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="inactive_date">
                                                         {{ __('Inactive Date *') }}
                                                     </label>
 
-                                                    <button type="button" class="block w-9 h-9 p-1.5 m-0 text-black/[0.60] rounded-full align-middle cursor-pointer outline-none transition duration-150 ease-in-out absolute right-0 top-1/2 -translate-y-1/2 z-0 hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] peer-disabled:opacity-70 peer-disabled:cursor-not-allowed peer-disabled:hover:!bg-transparent peer-disabled:active:!bg-transparent peer-disabled:focus:!bg-transparent" data-te-datepicker-toggle-ref data-te-datepicker-toggle-button-ref>
+                                                    <button type="button" class="block w-9 h-9 p-1.5 m-0 text-black/[0.60] rounded-full align-middle cursor-pointer outline-none transition duration-150 ease-in-out absolute right-1 top-1/2 -translate-y-1/2 z-0 hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] peer-disabled:opacity-70 peer-disabled:cursor-not-allowed peer-disabled:hover:!bg-transparent peer-disabled:active:!bg-transparent peer-disabled:focus:!bg-transparent" data-te-datepicker-toggle-ref data-te-datepicker-toggle-button-ref>
                                                         <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                             <path d="M0 0h24v24H0z" fill="none" />
                                                             <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
@@ -106,16 +106,16 @@
                                             </div>
 
                                             @error('inactive_date')
-                                                <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
+                                                <span class="block w-full h-auto p-0 mt-2 text-xs tracking-normal text-error text-left break-words">
                                                     {{ $message }}
                                                 </span>
                                             @enderror
                                         </div>
                                     </div>
 
-                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-2 mt-2 relative sm:flex-row first:mt-0 last:mb-0">
+                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-4 mt-0 relative sm:flex-row first:mt-0 last:mb-0">
                                         <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
-                                            <div class="block w-auto h-auto p-0 mb-2 relative">
+                                            <div class="block w-auto h-auto p-0 mb-0 relative">
 
                                                 {{-- Select --}}
                                                 <div class="block w-full h-auto p-0 m-0 relative">
@@ -136,22 +136,22 @@
                                             </div>
 
                                             @error('reason')
-                                                <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
+                                                <span class="block w-full h-auto p-0 mt-2 text-xs tracking-normal text-error text-left break-words">
                                                     {{ $message }}
                                                 </span>
                                             @enderror
                                         </div>
                                     </div>
 
-                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-2 mt-2 relative sm:flex-row first:mt-0 last:mb-0">
+                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-4 mt-0 relative sm:flex-row first:mt-0 last:mb-0">
                                         <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
-                                            <div class="block w-auto h-auto p-0 mb-2 relative">
+                                            <div class="block w-auto h-auto p-0 mb-0 relative">
 
                                                 {{-- Input --}}
                                                 <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
-                                                    <textarea class="peer caret-primary block min-h-[48px] w-full border-0 bg-transparent pt-3 pb-2 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('notes') is-invalid @enderror" rows="1" id="notes" name="notes" autocomplete="off" autocapitalize="off" spellcheck="false">{{ old('notes') }}</textarea>
+                                                    <textarea class="peer caret-primary block min-h-[48px] w-full rounded border-0 bg-transparent px-3 py-3 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('notes') is-invalid @enderror" rows="1" id="notes" name="notes" autocomplete="off" autocapitalize="off" spellcheck="false">{{ old('notes') }}</textarea>
 
-                                                    <label class="pointer-events-none absolute top-0 left-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-3 leading-[1.6] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.25rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.25rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="notes">
+                                                    <label class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="notes">
                                                         {{ __('Notes') }}
                                                     </label>
                                                 </div>
@@ -160,7 +160,7 @@
                                             </div>
 
                                             @error('notes')
-                                                <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
+                                                <span class="block w-full h-auto p-0 mt-2 text-xs tracking-normal text-error text-left break-words">
                                                     {{ $message }}
                                                 </span>
                                             @enderror

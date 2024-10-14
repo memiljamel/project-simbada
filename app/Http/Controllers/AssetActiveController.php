@@ -139,7 +139,7 @@ class AssetActiveController extends Controller
                 QrCode::format('png')
                     ->margin(1)
                     ->size(512)
-                    ->generate("http://localhost:8080/{$asset->id}"),
+                    ->generate(route('asset-details.scans', $asset->id)),
             );
 
             if ($request->hasFile('attachments')) {
