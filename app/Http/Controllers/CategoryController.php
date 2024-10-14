@@ -31,7 +31,7 @@ class CategoryController extends Controller
         $page = $request->query('page');
         $search = $request->query('search');
 
-        $categories = Category::when($search, function (Builder $query, ?string $search) {
+        $categories = Category::withoutNoneName()->when($search, function (Builder $query, ?string $search) {
             $query->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('description', 'LIKE', "%{$search}%");
         })

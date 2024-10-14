@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AssetActiveController;
 use App\Http\Controllers\AssetArchiveController;
+use App\Http\Controllers\AssetDetailController;
 use App\Http\Controllers\AssetFinanceController;
 use App\Http\Controllers\AssetHistoryController;
 use App\Http\Controllers\AssetInactiveController;
@@ -12,8 +13,10 @@ use App\Http\Controllers\Auth\ResetController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DistributorController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PrintController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResponsiblePersonController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +31,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::view('/', 'home.index')->name('home.index');
+
+Route::get('assets/{asset}/scans', AssetDetailController::class)
+    ->name('asset-details.scans');
 
 Route::middleware('guest')->group(function () {
     Route::prefix('auth')->group(function () {
@@ -56,6 +64,15 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware(['auth', 'verified', 'auth.session'])->group(function () {
     Route::prefix('assets')->group(function () {
+        Route::controller(ExportController::class)->group(function () {
+            Route::get('export/{status}/pdf', 'pdf')
+                ->name('asset-export.pdf');
+            Route::get('export/{status}/docx', 'docx')
+                ->name('asset-export.docx');
+            Route::get('export/{status}/xlsx', 'xlsx')
+                ->name('asset-export.xlsx');
+        });
+
         Route::controller(AssetArchiveController::class)->group(function () {
             Route::get('{asset}/archives/create', 'create')
                 ->name('asset-active.archives.create');
@@ -78,6 +95,13 @@ Route::middleware(['auth', 'verified', 'auth.session'])->group(function () {
             ->names('asset-histories');
         Route::resource('finances', AssetFinanceController::class)
             ->names('asset-finances');
+    });
+
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('profile', 'edit')
+            ->name('profile.edit');
+        Route::put('profile/current', 'update')
+            ->name('profile.update');
     });
 
     Route::controller(PrintController::class)->group(function () {

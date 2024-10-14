@@ -2,7 +2,7 @@
     <div class="flex flex-col w-64 h-full bg-white border-r border-solid border-chinese-white shadow-none overflow-hidden dark:bg-charleston-green dark:border-dark-liver">
 
         <div class="block w-full h-14 p-2 m-0 relative lg:h-16 lg:py-3">
-            <a href="" class="inline-block w-auto max-w-full h-10 px-2 py-1.5 m-0 headline-6 text-black/[0.87] no-underline truncate dark:text-white/[0.87]" id="sidebar-label">
+            <a href="{{ route('home.index') }}" class="inline-block w-auto max-w-full h-10 px-2 py-1.5 m-0 headline-6 text-black/[0.87] no-underline truncate dark:text-white/[0.87]" id="sidebar-label">
                 {{ config('app.name', 'Laravel') }}
             </a>
         </div>

@@ -32,7 +32,7 @@ class UserController extends Controller
         $page = $request->query('page');
         $search = $request->query('search');
 
-        $users = User::withoutAdminRole()->when($search, function (Builder $query, ?string $search) {
+        $users = User::withoutAdministratorRole()->when($search, function (Builder $query, ?string $search) {
             $query->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('email', 'LIKE', "%{$search}%")
                 ->orWhere('description', 'LIKE', "%{$search}%");

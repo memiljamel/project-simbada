@@ -14,6 +14,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "active-menu-link": "^1.1.8",
         "autosize": "^6.0.1",
         "puppeteer": "^23.5.0",
         "tw-elements": "^1.1.0"

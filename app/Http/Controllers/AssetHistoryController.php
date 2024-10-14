@@ -45,8 +45,7 @@ class AssetHistoryController extends Controller
                     ->orWhere('condition_percentage', 'LIKE', "%{$search}%")
                     ->orWhere('completeness_percentage', 'LIKE', "%{$search}%")
                     ->orWhereHas('asset', function (Builder $query) use ($search) {
-                        $query->where('active', true)
-                            ->orWhere('name', 'LIKE', "%{$search}%");
+                        $query->where('name', 'LIKE', "%{$search}%");
                     })
                     ->orWhereHas('responsiblePerson', function (Builder $query) use ($search) {
                         $query->where('name', 'LIKE', "%{$search}%");

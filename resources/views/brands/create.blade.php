@@ -39,7 +39,7 @@
                 {{-- Cards --}}
                 <div class="block w-full h-auto p-0 mt-4 bg-white rounded text-black/[0.87] shadow-01dp overflow-hidden dark:bg-charleston-green">
 
-                    <form action="{{ route('brands.store') }}" method="POST" autocomplete="off" autocapitalize="off">
+                    <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('brands.store') }}" method="POST" autocomplete="off" autocapitalize="off">
                         @csrf
                         @method('POST')
 
@@ -76,15 +76,15 @@
                             <div class="block w-full max-w-3xl h-auto p-0 m-0 relative">
                                 <div class="flex flex-col flex-grow-0 gap-0 w-full h-auto p-0 m-0 relative">
 
-                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-2 mt-2 relative sm:flex-row first:mt-0 last:mb-0">
+                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-4 mt-0 relative sm:flex-row first:mt-0 last:mb-0">
                                         <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
-                                            <div class="block w-auto h-auto p-0 mb-2 relative">
+                                            <div class="block w-auto h-auto p-0 mb-0 relative">
 
                                                 {{-- Input --}}
                                                 <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
-                                                    <input type="text" class="peer caret-primary block min-h-[48px] w-full border-0 bg-transparent pt-3 pb-2 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" autocomplete="off" autocapitalize="off" autofocus />
+                                                    <input type="text" class="peer caret-primary block min-h-[48px] w-full rounded border-0 bg-transparent px-3 py-3 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" autocomplete="off" autocapitalize="off" autofocus />
 
-                                                    <label class="pointer-events-none absolute top-0 left-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-3 leading-[1.6] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.25rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.25rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="name">
+                                                    <label class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="name">
                                                         {{ __('Name *') }}
                                                     </label>
                                                 </div>
@@ -93,22 +93,22 @@
                                             </div>
 
                                             @error('name')
-                                                <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
+                                                <span class="block w-full h-auto p-0 mt-2 text-xs tracking-normal text-error text-left break-words">
                                                     {{ $message}}
                                                 </span>
                                             @enderror
                                         </div>
                                     </div>
 
-                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-2 mt-2 relative sm:flex-row first:mt-0 last:mb-0">
+                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-4 mt-0 relative sm:flex-row first:mt-0 last:mb-0">
                                         <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
-                                            <div class="block w-auto h-auto p-0 mb-2 relative">
+                                            <div class="block w-auto h-auto p-0 mb-0 relative">
 
                                                 {{-- Input --}}
                                                 <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
-                                                    <textarea class="peer caret-primary block min-h-[48px] w-full border-0 bg-transparent pt-3 pb-2 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('description') is-invalid @enderror" rows="1" id="description" name="description" autocomplete="off" autocapitalize="off" spellcheck="false">{{ old('description') }}</textarea>
+                                                    <textarea class="peer caret-primary block min-h-[48px] w-full rounded border-0 bg-transparent px-3 py-3 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('description') is-invalid @enderror" rows="1" id="description" name="description" autocomplete="off" autocapitalize="off" spellcheck="false">{{ old('description') }}</textarea>
 
-                                                    <label class="pointer-events-none absolute top-0 left-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-3 leading-[1.6] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.25rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.25rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="description">
+                                                    <label class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="description">
                                                         {{ __('Description') }}
                                                     </label>
                                                 </div>
@@ -117,7 +117,7 @@
                                             </div>
 
                                             @error('description')
-                                                <span class="block w-full h-auto p-0 mb-2 text-xs tracking-normal text-error text-left break-words">
+                                                <span class="block w-full h-auto p-0 mt-2 text-xs tracking-normal text-error text-left break-words">
                                                     {{ $message }}
                                                 </span>
                                             @enderror

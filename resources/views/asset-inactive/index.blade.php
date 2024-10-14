@@ -54,14 +54,14 @@
                                 </div>
                             </div>
 
-                            <div class="block w-auto h-auto p-0 mx-2 mt-2 overflow-hidden relative basis-full order-3 sm:basis-auto sm:order-none">
-                                <form class="block w-auto h-auto p-0 m-0 relative" action="{{ route('asset-inactive.index') }}" method="GET" autocomplete="off" autocapitalize="off">
+                            <div class="block w-auto h-auto px-2 py-0.5 m-0 overflow-hidden relative basis-full order-3 sm:basis-auto sm:order-none">
+                                <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('asset-inactive.index') }}" method="GET" autocomplete="off" autocapitalize="off">
 
                                     {{-- Search --}}
                                     <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
-                                        <input type="search" class="peer caret-primary block min-h-[32px] w-full border-0 bg-transparent py-1.5 pl-8 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 disabled:opacity-60 disabled:cursor-not-allowed" id="search" name="search" value="{{ $search }}" placeholder="Search..." autocomplete="off" spellcheck="false" autocapitalize="off" aria-label="Search" aria-describedby="button-search" />
+                                        <input type="search" class="peer caret-primary block min-h-[32px] w-full border-0 bg-transparent pl-10 pr-2 py-1.5 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 disabled:opacity-60 disabled:cursor-not-allowed" id="search" name="search" value="{{ $search }}" placeholder="Search..." autocomplete="off" spellcheck="false" autocapitalize="off" aria-label="Search" aria-describedby="button-search" />
 
-                                        <button type="submit" class="block w-6 h-6 p-0 m-0 bg-transparent text-black/[0.60] rounded-full align-middle cursor-pointer outline-none transition duration-150 ease-in-out absolute left-0 top-1/2 -translate-y-1/2 z-0 dark:text-white/[0.60] peer-disabled:opacity-70 peer-disabled:cursor-not-allowed peer-disabled:hover:!bg-transparent peer-disabled:active:!bg-transparent peer-disabled:focus:!bg-transparent" id="button-search">
+                                        <button type="submit" class="block w-6 h-6 p-0 m-0 bg-transparent text-black/[0.60] rounded-full align-middle cursor-pointer outline-none transition duration-150 ease-in-out absolute left-2 top-1/2 -translate-y-1/2 z-0 dark:text-white/[0.60] peer-disabled:opacity-70 peer-disabled:cursor-not-allowed peer-disabled:hover:!bg-transparent peer-disabled:active:!bg-transparent peer-disabled:focus:!bg-transparent" id="button-search">
                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                 <path d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
@@ -89,7 +89,7 @@
 
                                                 <ul class="hidden min-w-[128px] w-auto max-w-[280px] h-auto py-2 m-0 list-none rounded bg-white shadow-08dp absolute top-full right-0 z-10 [&[data-te-dropdown-show]]:block dark:bg-charleston-green" data-te-dropdown-menu-ref>
                                                     <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                        <a href="" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
+                                                        <a href="{{ route('asset-export.pdf', 'inactive') }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                                             <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                 <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                                     {{ __('PDF') }}
@@ -99,7 +99,7 @@
                                                     </li>
 
                                                     <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                        <a href="" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
+                                                        <a href="{{ route('asset-export.xlsx', 'inactive') }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                                             <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                 <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                                     {{ __('Xlsx') }}
@@ -109,7 +109,7 @@
                                                     </li>
 
                                                     <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                        <a href="" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
+                                                        <a href="{{ route('asset-export.docx', 'inactive') }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                                             <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                 <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                                     {{ __('Docx') }}

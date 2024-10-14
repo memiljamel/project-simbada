@@ -84,9 +84,9 @@ class User extends Authenticatable implements LaratrustUser
     ];
 
     /**
-     * Scope a query to only include active asset.
+     * Scope a query to only include without administrator role.
      */
-    public function scopeWithoutAdminRole(Builder $query): void
+    public function scopeWithoutAdministratorRole(Builder $query): void
     {
         $query->whereDoesntHave('roles', function ($query) {
             $query->where('name', RoleEnum::Administrator->value);
