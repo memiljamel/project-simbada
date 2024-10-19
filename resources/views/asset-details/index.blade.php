@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Details')
+@section('title', 'Detail')
 
 @section('content')
     <div class="flex flex-col w-full h-full p-0 m-0 relative">
@@ -27,13 +27,13 @@
                     <ol class="block w-full h-auto p-0 m-0 overflow-hidden">
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
                             <a href="{{ route('home.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
-                                {{ __('Home') }}
+                                {{ __('Beranda') }}
                             </a>
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
                             <span class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-black/[0.60] cursor-default dark:text-white/[0.60]">
-                                {{ __('Details') }}
+                                {{ __('Detail') }}
                             </span>
                         </li>
                     </ol>
@@ -49,7 +49,7 @@
                             <div class="flex-1 block w-auto h-auto p-0 m-0 overflow-hidden relative">
                                 <div class="block w-full h-auto p-0 m-0 relative">
                                     <h6 class="block w-full h-auto px-2 py-1.5 m-0 headline-6 text-black/[0.87] truncate dark:text-white/[0.87]">
-                                        {{ __('Details') }}
+                                        {{ __('Detail') }}
                                     </h6>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                             <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
                                     <span class="block w-auto h-auto p-0 py-2 m-0 caption uppercase tracking-[1.25px] text-black/[0.60] truncate dark:text-white/[0.60]">
-                                        {{ __('General') }}
+                                        {{ __('Umum') }}
                                     </span>
                                 </li>
 
@@ -71,13 +71,17 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Id') }}
+                                                {{ __('Penanggung Jawab') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->id }}
+                                                @if($asset->latestHistory)
+                                                    {{ $asset->latestHistory?->responsiblePerson?->name }}
+                                                @else
+                                                    {{ __('-') }}
+                                                @endif
                                             </span>
                                         </div>
                                     </div>
@@ -87,23 +91,7 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Name') }}
-                                            </span>
-                                        </div>
-
-                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->name }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                    <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Code') }}
+                                                {{ __('Kode Barang') }}
                                             </span>
                                         </div>
 
@@ -119,7 +107,7 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Category') }}
+                                                {{ __('Jenis Barang') }}
                                             </span>
                                         </div>
 
@@ -130,86 +118,44 @@
                                         </div>
                                     </div>
                                 </li>
+
+                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
+                                    <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
+                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
+                                            <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
+                                                {{ __('Nama Barang') }}
+                                            </span>
+                                        </div>
+
+                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
+                                            <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
+                                                {{ $asset->name }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
+                                    <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
+                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
+                                            <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
+                                                {{ __('Nomor Register') }}
+                                            </span>
+                                        </div>
+
+                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
+                                            <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
+                                                {{ $asset->serial_number }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
-
-                            @if(!$asset->active)
-                                <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
-                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                        <span class="block w-auto h-auto p-0 py-2 m-0 caption uppercase tracking-[1.25px] text-black/[0.60] truncate dark:text-white/[0.60]">
-                                            {{ __('Status') }}
-                                        </span>
-                                    </li>
-
-                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                        <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                    {{ __('Asset Status') }}
-                                                </span>
-                                            </div>
-
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                    {{ __('Non Active') }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                        <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                    {{ __('Inactive Date') }}
-                                                </span>
-                                            </div>
-
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                    {{ $asset->assetArchive?->inactive_date }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                        <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                    {{ __('Reason') }}
-                                                </span>
-                                            </div>
-
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                    {{ $asset->assetArchive?->reason->label() }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                        <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                    {{ __('Notes') }}
-                                                </span>
-                                            </div>
-
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                    {{ $asset->assetArchive?->notes }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            @endif
 
                             <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
                                     <span class="block w-auto h-auto p-0 py-2 m-0 caption uppercase tracking-[1.25px] text-black/[0.60] truncate dark:text-white/[0.60]">
-                                        {{ __('QR Code & Photo') }}
+                                        {{ __('QR-Code & Foto') }}
                                     </span>
                                 </li>
 
@@ -217,7 +163,7 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('QR Code & Photo') }}
+                                                {{ __('QR-Code & Foto') }}
                                             </span>
                                         </div>
 
@@ -237,7 +183,7 @@
                             <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
                                     <span class="block w-auto h-auto p-0 py-2 m-0 caption uppercase tracking-[1.25px] text-black/[0.60] truncate dark:text-white/[0.60]">
-                                        {{ __('Detail Asset') }}
+                                        {{ __('Detail Aset') }}
                                     </span>
                                 </li>
 
@@ -245,7 +191,7 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Brand') }}
+                                                {{ __('Merk') }}
                                             </span>
                                         </div>
 
@@ -261,7 +207,7 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Type') }}
+                                                {{ __('Tipe') }}
                                             </span>
                                         </div>
 
@@ -277,13 +223,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Manufacturer') }}
+                                                {{ __('Ukuran / CC') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->manufacturer }}
+                                                {{ $asset->size }}
                                             </span>
                                         </div>
                                     </div>
@@ -293,13 +239,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Serial Number') }}
+                                                {{ __('Bahan') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->serial_number }}
+                                                {{ $asset->material }}
                                             </span>
                                         </div>
                                     </div>
@@ -309,29 +255,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Production Year') }}
+                                                {{ __('Tahun Pembelian') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->production_year }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                    <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Description') }}
-                                            </span>
-                                        </div>
-
-                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->description }}
+                                                {{ $asset->purchase_year }}
                                             </span>
                                         </div>
                                     </div>
@@ -341,7 +271,7 @@
                             <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
                                     <span class="block w-auto h-auto p-0 py-2 m-0 caption uppercase tracking-[1.25px] text-black/[0.60] truncate dark:text-white/[0.60]">
-                                        {{ __('Purchase') }}
+                                        {{ __('Nomor') }}
                                     </span>
                                 </li>
 
@@ -349,13 +279,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Purchase Date') }}
+                                                {{ __('Pabrik') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->purchase_date }}
+                                                {{ $asset->distributor?->name ?? __('-') }}
                                             </span>
                                         </div>
                                     </div>
@@ -365,13 +295,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Distributor') }}
+                                                {{ __('Rangka') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->distributor?->name }}
+                                                {{ $asset->frame_number ?? __('-') }}
                                             </span>
                                         </div>
                                     </div>
@@ -381,13 +311,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Invoice Number') }}
+                                                {{ __('Mesin') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->invoice_number }}
+                                                {{ $asset->engine_number ?? __('-') }}
                                             </span>
                                         </div>
                                     </div>
@@ -397,13 +327,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Qty') }}
+                                                {{ __('Polisi') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->qty . __('Unit') }}
+                                                {{ $asset->police_number ?? __('-') }}
                                             </span>
                                         </div>
                                     </div>
@@ -413,29 +343,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Unit Price') }}
+                                                {{ __('BPKB') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ Number::currency($asset->unit_price, in: 'IDR', locale: 'id') }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                    <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Total Price') }}
-                                            </span>
-                                        </div>
-
-                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ Number::currency($asset->total_price, in: 'IDR', locale: 'id') }}
+                                                {{ $asset->bpkb_number ?? __('-') }}
                                             </span>
                                         </div>
                                     </div>
@@ -445,7 +359,7 @@
                             <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
                                 <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
                                     <span class="block w-auto h-auto p-0 py-2 m-0 caption uppercase tracking-[1.25px] text-black/[0.60] truncate dark:text-white/[0.60]">
-                                        {{ __('Additional Notes') }}
+                                        {{ __('Pembelian') }}
                                     </span>
                                 </li>
 
@@ -453,275 +367,13 @@
                                     <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Notes') }}
+                                                {{ __('Asal Usul') }}
                                             </span>
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                             <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->notes }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
-                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                    <span class="block w-auto h-auto p-0 py-2 m-0 caption uppercase tracking-[1.25px] text-black/[0.60] truncate dark:text-white/[0.60]">
-                                        {{ __('Attachments') }}
-                                    </span>
-                                </li>
-
-                                @foreach($asset->assetAttachments as $attachment)
-                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                        <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                    {{ __('File Name') }}
-                                                </span>
-                                            </div>
-
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <a class="inline-block w-auto h-auto p-0 m-0 body-2 text-primary text-left leading-6 no-underline cursor-pointer outline-none hover:underline focus:underline active:underline" href="{{ $attachment->filename_url }}" target="_blank">
-                                                    {{ str($attachment->filename)->basename() }}
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-
-                            <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
-                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                    <span class="block w-auto h-auto p-0 py-2 m-0 caption uppercase tracking-[1.25px] text-black/[0.60] truncate dark:text-white/[0.60]">
-                                        {{ __('Histories') }}
-                                    </span>
-                                </li>
-
-                                @forelse($asset->assetHistories as $history)
-                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                        <div class="block w-full h-auto p-0 m-0 border-b border-solid border-chinese-white relative">
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Date From') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ $history->date_from }}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Responsible Person') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ $history->responsiblePerson?->name }}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Location') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ $history->location?->name }}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Qty') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ $history->qty }}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Condition') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ Number::percentage($history->condition_percentage, precision: 0, locale: 'id') }}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Completeness') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ Number::percentage($history->completeness_percentage, precision: 0, locale: 'id') }}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Notes') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ $history->notes }}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @empty
-                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                        <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('No data available.') }}
-                                            </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforelse
-                            </ul>
-
-                            <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
-                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                    <span class="block w-auto h-auto p-0 py-2 m-0 caption uppercase tracking-[1.25px] text-black/[0.60] truncate dark:text-white/[0.60]">
-                                        {{ __('Finances') }}
-                                    </span>
-                                </li>
-
-                                @forelse($asset->assetFinances as $finance)
-                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                        <div class="block w-full h-auto p-0 m-0 border-b border-solid border-chinese-white relative">
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Type') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ $finance->type->label() }}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Date') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ $finance->date }}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Amount') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ Number::currency($finance->amount, in: 'IDR', locale: 'id') }}
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border border-none border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ __('Notes') }}
-                                                    </span>
-                                                </div>
-
-                                                <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                        {{ $finance->notes }}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @empty
-                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                        <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                    {{ __('No data available.') }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforelse
-                            </ul>
-
-                            <ul class="block w-full p-0 mb-2 mt-6 list-none shadow-none relative first:mt-0 last:mb-0">
-                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                    <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Created At') }}
-                                            </span>
-                                        </div>
-
-                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->created_at }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                    <div class="flex flex-col justify-between items-stretch !gap-1 w-full h-auto !px-0 py-4 m-0 border-b border-solid border-chinese-white text-black/[0.60] no-underline outline-none whitespace-normal overflow-auto select-text dark:border-dark-liver lg:flex-row lg:!gap-8 lg:min-h-[52px] lg:py-3.5">
-                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 subtitle-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ __('Updated At') }}
-                                            </span>
-                                        </div>
-
-                                        <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <span class="block w-full h-auto p-0 m-0 body-2 text-black/[0.87] text-left leading-6 dark:text-white/[0.87]">
-                                                {{ $asset->updated_at }}
+                                                {{ $asset->origin }}
                                             </span>
                                         </div>
                                     </div>
@@ -733,8 +385,6 @@
 
                 </div>
                 {{-- End Cards --}}
-
-
 
             </div>
         </main>

@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Active')
+@section('title', 'Aset Aktif')
 
 @section('content')
     <div class="flex flex-col w-full h-full p-0 m-0 relative">
@@ -16,14 +16,14 @@
                 <nav class="block w-full h-auto p-0 m-0 list-none rounded whitespace-nowrap overflow-hidden relative">
                     <ol class="block w-full h-auto p-0 m-0 overflow-hidden">
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
-                            <a href="" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
+                            <a href="{{ route('dashboard.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
                                 {{ __('Dashboard') }}
                             </a>
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
                             <span class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-black/[0.60] cursor-default dark:text-white/[0.60]">
-                                {{ __('Active') }}
+                                {{ __('Aset Aktif') }}
                             </span>
                         </li>
                     </ol>
@@ -49,7 +49,7 @@
                             <div class="flex-1 block w-auto h-auto p-0 m-0 overflow-hidden relative basis-auto order-1 sm:order-none">
                                 <div class="block w-full h-auto p-0 m-0 relative">
                                     <h6 class="block w-full h-auto px-2 py-1.5 m-0 headline-6 text-black/[0.87] truncate dark:text-white/[0.87]">
-                                        {{ __('All Active') }}
+                                        {{ __('Daftar Aset Aktif') }}
                                     </h6>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
 
                                     {{-- Search --}}
                                     <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
-                                        <input type="search" class="peer caret-primary block min-h-[32px] w-full border-0 bg-transparent pl-10 pr-2 py-1.5 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 disabled:opacity-60 disabled:cursor-not-allowed" id="search" name="search" value="{{ $search }}" placeholder="Search..." autocomplete="off" spellcheck="false" autocapitalize="off" aria-label="Search" aria-describedby="button-search" />
+                                        <input type="search" class="peer caret-primary block min-h-[32px] w-full border-0 bg-transparent pl-10 pr-2 py-1.5 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 disabled:opacity-60 disabled:cursor-not-allowed" id="search" name="search" value="{{ $search }}" placeholder="Cari..." autocomplete="off" spellcheck="false" autocapitalize="off" aria-label="Cari" aria-describedby="button-search" />
 
                                         <button type="submit" class="block w-6 h-6 p-0 m-0 bg-transparent text-black/[0.60] rounded-full align-middle cursor-pointer outline-none transition duration-150 ease-in-out absolute left-2 top-1/2 -translate-y-1/2 z-0 dark:text-white/[0.60] peer-disabled:opacity-70 peer-disabled:cursor-not-allowed peer-disabled:hover:!bg-transparent peer-disabled:active:!bg-transparent peer-disabled:focus:!bg-transparent" id="button-search">
                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
@@ -83,7 +83,7 @@
 
                                             {{-- Icon Link --}}
                                             <div class="block w-auto h-auto p-0 m-0 relative">
-                                                <a href="{{ route('asset-active.create') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Create" data-te-ripple-init data-te-ripple-color="light">
+                                                <a href="{{ route('asset-active.create') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Buat" data-te-ripple-init data-te-ripple-color="light">
                                                     <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                         <path d="M0 0h24v24H0z" fill="none" />
                                                         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
@@ -98,48 +98,16 @@
                                     @permission(App\Enums\PermissionEnum::DownloadAssets->value)
                                         <div class="inline-block w-auto h-auto p-0 m-0 relative">
 
-                                            {{-- Dropdown --}}
-                                            <div class="block w-auto h-auto p-0 m-0 relative" data-te-dropdown-ref>
-                                                <button type="button" class="inline-block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-toggle-ref data-te-dropdown-animation="off" data-te-toggle="tooltip" title="Download" data-te-ripple-init data-te-ripple-color="light">
+                                            {{-- Icon Link --}}
+                                            <div class="block w-auto h-auto p-0 m-0 relative">
+                                                <a href="{{ route('asset-export.xlsx', ['status' => 'active', 'search' => request()->query('search')]) }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Unduh" data-te-ripple-init data-te-ripple-color="light">
                                                     <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                         <path d="M0 0h24v24H0z" fill="none" />
                                                         <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />
                                                     </svg>
-                                                </button>
-
-                                                <ul class="hidden min-w-[128px] w-auto max-w-[280px] h-auto py-2 m-0 list-none rounded bg-white shadow-08dp absolute top-full right-0 z-10 [&[data-te-dropdown-show]]:block dark:bg-charleston-green" data-te-dropdown-menu-ref>
-                                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                        <a href="{{ route('asset-export.pdf', 'active') }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
-                                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                    {{ __('PDF') }}
-                                                                </span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                        <a href="{{ route('asset-export.xlsx', 'active') }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
-                                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                    {{ __('Xlsx') }}
-                                                                </span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-
-                                                    <li class="block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                        <a href="{{ route('asset-export.docx', 'active') }}" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
-                                                            <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                                <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                    {{ __('Docx') }}
-                                                                </span>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
+                                                </a>
                                             </div>
-                                            {{-- End Dropdown --}}
+                                            {{-- End Icon Link --}}
 
                                         </div>
                                     @endpermission
@@ -162,31 +130,34 @@
                                                 {{ __('#') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
-                                                {{ __('QR Code') }}
+                                                {{ __('QR-Code') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
-                                                {{ __('Photo') }}
+                                                {{ __('Foto') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Name') }}
+                                                {{ __('Kode Barang') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Category') }}
+                                                {{ __('Nama Barang') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Code') }}
+                                                {{ __('Jenis Barang') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Purchase Date') }}
+                                                {{ __('Merk / Tipe') }}
+                                            </th>
+                                            <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-right truncate dark:text-white/[0.87]">
+                                                {{ __('Tahun Pembelian') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Brand & Type') }}
-                                            </th>
-                                            <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Latest History') }}
+                                                {{ __('Riwayat Terakhir') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
-                                                {{ __('Action') }}
+                                                {{ __('Verifikasi') }}
+                                            </th>
+                                            <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
+                                                {{ __('Aksi') }}
                                             </th>
                                         </tr>
                                     </thead>
@@ -204,19 +175,19 @@
                                                     <img class="block min-w-[32px] w-8 h-8 p-0.5 mx-auto rounded align-middle text-center text-transparent object-cover indent-[10000px] ring-2 ring-primary cursor-zoom-in data-[te-lightbox-disabled]:cursor-auto" src="{{ $asset->photo_url }}" alt="{{ $asset->name }}" data-te-img="{{ $asset->photo_url }}" />
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
+                                                    {{ $asset->code }}
+                                                </td>
+                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                     {{ $asset->name }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                     {{ $asset->category?->name }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                    {{ $asset->code }}
+                                                    {{ $asset->brand?->name . __(' / ') . $asset->type }}
                                                 </td>
-                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                    {{ $asset->purchase_date }}
-                                                </td>
-                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                    {{ $asset->brand?->name }} & {{ $asset->type }}
+                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-right truncate dark:text-white/[0.87]">
+                                                    {{ $asset->purchase_year }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                     @if($asset->latestHistory)
@@ -224,7 +195,18 @@
                                                         ({{ $asset->latestHistory?->location?->name }},
                                                         {{ $asset->latestHistory?->date_from }})
                                                     @else
-                                                        {{ __('N/A') }}
+                                                        {{ __('-') }}
+                                                    @endif
+                                                </td>
+                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
+                                                    @if ($asset->verified)
+                                                        <span class="inline-block w-auto h-6 px-2.5 m-0 bg-blue-500/[0.04] text-blue-500 font-Roboto caption font-medium rounded-full align-middle leading-6 select-none">
+                                                            {{ __('Sudah Terverifikasi') }}
+                                                        </span>
+                                                    @else
+                                                        <span class="inline-block w-auto h-6 px-2.5 m-0 bg-red-500/[0.04] text-red-500 font-Roboto caption font-medium rounded-full align-middle leading-6 select-none">
+                                                            {{ __('Belum Terverifikasi') }}
+                                                        </span>
                                                     @endif
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
@@ -258,7 +240,7 @@
 
                                                                                 <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                                     <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                        {{ __('Details') }}
+                                                                                        {{ __('Detail') }}
                                                                                     </span>
                                                                                 </div>
                                                                             </a>
@@ -277,7 +259,7 @@
 
                                                                                 <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                                     <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                        {{ __('Edit') }}
+                                                                                        {{ __('Ubah') }}
                                                                                     </span>
                                                                                 </div>
                                                                             </a>
@@ -300,7 +282,7 @@
 
                                                                                     <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                                         <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                            {{ __('Delete') }}
+                                                                                            {{ __('Hapus') }}
                                                                                         </span>
                                                                                     </div>
                                                                                 </button>
@@ -320,7 +302,7 @@
 
                                                                                 <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                                     <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                        {{ __('Archive') }}
+                                                                                        {{ __('Arsipkan') }}
                                                                                     </span>
                                                                                 </div>
                                                                             </a>
@@ -336,8 +318,8 @@
                                             </tr>
                                         @empty
                                             <tr class="table-row text-inherit align-middle outline-none relative">
-                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]" colspan="10">
-                                                    {{ __('No data available.') }}
+                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]" colspan="11">
+                                                    {{ __('Tidak ada data.') }}
                                                 </td>
                                             </tr>
                                         @endforelse

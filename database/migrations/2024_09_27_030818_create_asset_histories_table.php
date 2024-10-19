@@ -27,8 +27,6 @@ return new class extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->integer('qty');
-            $table->integer('condition_percentage');
-            $table->integer('completeness_percentage');
             $table->text('notes')->nullable();
             $table->timestamps();
         });

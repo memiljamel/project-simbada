@@ -40,12 +40,12 @@ enum ReasonEnum: string
     public function label(): string
     {
         return match ($this) {
-            ReasonEnum::Sold => __('Sold'),
-            ReasonEnum::Donated => __('Donated'),
-            ReasonEnum::Discarded => __('Discarded'),
-            ReasonEnum::Lost => __('Lost'),
-            ReasonEnum::CompletelyDamaged => __('Completely Damaged'),
-            ReasonEnum::Others => __('Others'),
+            ReasonEnum::Sold => __('Terjual'),
+            ReasonEnum::Donated => __('Didonasikan'),
+            ReasonEnum::Discarded => __('Dibuang'),
+            ReasonEnum::Lost => __('Hilang'),
+            ReasonEnum::CompletelyDamaged => __('Rusak Total'),
+            ReasonEnum::Others => __('Lainnya'),
         };
     }
 }

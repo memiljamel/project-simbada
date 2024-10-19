@@ -6,12 +6,14 @@ use App\Enums\RoleEnum;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Permission;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class UserController extends Controller
@@ -67,6 +69,18 @@ class UserController extends Controller
             $user->email = $request->input('email');
             $user->password = Hash::make($request->input('password'));
             $user->description = $request->input('description');
+
+            if ($request->hasFile('photo')) {
+                if ($user->photo && Storage::disk('public')->exists($user->photo)) {
+                    Storage::disk('public')->delete($user->photo);
+                }
+
+                $user->photo = Storage::disk('public')->put(
+                    'photos',
+                    $request->file('photo'),
+                );
+            }
+
             $user->save();
 
             $permissions = Permission::whereIn('name', $request->input('permissions'))
@@ -111,6 +125,17 @@ class UserController extends Controller
                 $user->password = Hash::make($request->input('password'));
             }
 
+            if ($request->hasFile('photo')) {
+                if ($user->photo && Storage::disk('public')->exists($user->photo)) {
+                    Storage::disk('public')->delete($user->photo);
+                }
+
+                $user->photo = Storage::disk('public')->put(
+                    'photos',
+                    $request->file('photo'),
+                );
+            }
+
             $user->save();
 
             $permissions = Permission::whereIn('name', $request->input('permissions'))
@@ -130,8 +155,21 @@ class UserController extends Controller
     public function destroy(User $user): RedirectResponse
     {
         DB::transaction(function () use ($user) {
-            $user->permissions()->delete();
-            $user->roles()->delete();
+            $roles = Role::whereIn('name', $user->roles->pluck('name'))
+                ->get()
+                ->toArray();
+
+            $permissions = Permission::whereIn('name', $user->permissions->pluck('name'))
+                ->get()
+                ->toArray();
+
+            $user->removeRoles($roles);
+            $user->removePermissions($permissions);
+
+            if ($user->photo && Storage::disk('public')->exists($user->photo)) {
+                Storage::disk('public')->delete($user->photo);
+            }
+
             $user->delete();
         });
 

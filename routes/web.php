@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssetActiveController;
 use App\Http\Controllers\AssetArchiveController;
 use App\Http\Controllers\AssetDetailController;
+use App\Http\Controllers\AssetExportController;
 use App\Http\Controllers\AssetFinanceController;
 use App\Http\Controllers\AssetHistoryController;
 use App\Http\Controllers\AssetInactiveController;
@@ -12,12 +13,13 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\ResetController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DistributorController;
-use App\Http\Controllers\ExportController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResponsiblePersonController;
+use App\Http\Controllers\ScansController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,12 +65,27 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware(['auth', 'verified', 'auth.session'])->group(function () {
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('dashboard', 'index')
+            ->name('dashboard.index');
+    });
+
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('profile', 'edit')
+            ->name('profile.edit');
+        Route::put('profile/current', 'update')
+            ->name('profile.update');
+    });
+
+    Route::controller(PrintController::class)->group(function () {
+        Route::get('prints', 'index')
+            ->name('prints.index');
+        Route::post('prints', 'store')
+            ->name('prints.store');
+    });
+
     Route::prefix('assets')->group(function () {
-        Route::controller(ExportController::class)->group(function () {
-            Route::get('export/{status}/pdf', 'pdf')
-                ->name('asset-export.pdf');
-            Route::get('export/{status}/docx', 'docx')
-                ->name('asset-export.docx');
+        Route::controller(AssetExportController::class)->group(function () {
             Route::get('export/{status}/xlsx', 'xlsx')
                 ->name('asset-export.xlsx');
         });
@@ -97,24 +114,10 @@ Route::middleware(['auth', 'verified', 'auth.session'])->group(function () {
             ->names('asset-finances');
     });
 
-    Route::controller(ProfileController::class)->group(function () {
-        Route::get('profile', 'edit')
-            ->name('profile.edit');
-        Route::put('profile/current', 'update')
-            ->name('profile.update');
+    Route::prefix('auth')->group(function () {
+        Route::delete('logout', LogoutController::class)
+            ->name('logout');
     });
-
-    Route::controller(PrintController::class)->group(function () {
-        Route::get('prints', 'index')
-            ->name('prints.index');
-        Route::post('prints', 'store')
-            ->name('prints.store');
-    });
-
-    Route::resource('assets', AssetActiveController::class)
-        ->names('asset-active');
-    Route::resource('responsible-persons', ResponsiblePersonController::class)
-        ->parameters(['responsible-persons' => 'person']);
 
     Route::resources([
         'categories' => CategoryController::class,
@@ -124,8 +127,11 @@ Route::middleware(['auth', 'verified', 'auth.session'])->group(function () {
         'users' => UserController::class,
     ]);
 
-    Route::prefix('auth')->group(function () {
-        Route::delete('logout', LogoutController::class)
-            ->name('logout');
-    });
+    Route::resource('assets', AssetActiveController::class)
+        ->names('asset-active');
+    Route::resource('responsible-persons', ResponsiblePersonController::class)
+        ->parameters(['responsible-persons' => 'person']);
+    Route::resource('scans', ScansController::class)
+        ->parameters(['scans' => 'asset'])
+        ->except(['create', 'destroy']);
 });

@@ -39,7 +39,7 @@
                             <a href="{{ route('home.index') }}" class="flex justify-between items-center gap-4 w-full h-12 py-2 px-4 m-0 body-2 text-base text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                 <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                     <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                        {{ __('Home') }}
+                                        {{ __('Beranda') }}
                                     </span>
                                 </div>
                             </a>
@@ -49,7 +49,7 @@
                             <a href="{{ route('profile.edit') }}" class="flex justify-between items-center gap-4 w-full h-12 py-2 px-4 m-0 body-2 text-base text-black/[0.60] no-underline outline-none truncate select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                 <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                     <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                        {{ __('Edit Profile') }}
+                                        {{ __('Ubah Profil') }}
                                     </span>
                                 </div>
                             </a>
@@ -63,7 +63,7 @@
                                 <button type="submit" class="flex justify-between items-center gap-4 w-full h-12 py-2 px-4 m-0 body-2 text-base text-black/[0.60] no-underline outline-none whitespace-nowrap overflow-hidden select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                     <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                         <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                            {{ __('Logout') }}
+                                            {{ __('Keluar') }}
                                         </span>
                                     </div>
                                 </button>

@@ -16,12 +16,6 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            CategorySeeder::class,
-            BrandSeeder::class,
-            DistributorSeeder::class,
-            AssetAttachmentSeeder::class,
-            ResponsiblePersonSeeder::class,
-            LocationSeeder::class,
         ]);
     }
 }

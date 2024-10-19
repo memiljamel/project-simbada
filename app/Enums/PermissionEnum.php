@@ -14,6 +14,7 @@ enum PermissionEnum: string
     case DownloadAssets = 'download-assets';
     case ArchiveAssets = 'archive-assets';
     case UnarchivedAssets = 'unarchived-assets';
+    case VerifyAssets = 'verify-assets';
 
     /**
      * define the permission for asset-histories menu.
@@ -67,27 +68,28 @@ enum PermissionEnum: string
     public function label(): string
     {
         return match ($this) {
-            PermissionEnum::CreateAssets => __('Create Asset'),
-            PermissionEnum::ReadAssets => __('Read Asset'),
-            PermissionEnum::UpdateAssets => __('Update Asset'),
-            PermissionEnum::DeleteAssets => __('Delete Asset'),
-            PermissionEnum::DownloadAssets => __('Download Asset'),
-            PermissionEnum::ArchiveAssets => __('Archive Asset'),
-            PermissionEnum::UnarchivedAssets => __('Unarchived Asset'),
-            PermissionEnum::CreateAssetHistories => __('Create Asset History'),
-            PermissionEnum::ReadAssetHistories => __('Read Asset History'),
-            PermissionEnum::UpdateAssetHistories => __('Update Asset History'),
-            PermissionEnum::DeleteAssetHistories => __('Delete Asset History'),
-            PermissionEnum::CreateAssetFinances => __('Create Asset Finance'),
-            PermissionEnum::ReadAssetFinances => __('Read Asset Finance'),
-            PermissionEnum::UpdateAssetFinances => __('Update Asset Finance'),
-            PermissionEnum::DeleteAssetFinances => __('Delete Asset Finance'),
-            PermissionEnum::CrudCategories => __('Menu Category'),
-            PermissionEnum::CrudBrands => __('Menu Brand'),
+            PermissionEnum::CreateAssets => __('Buat Asset'),
+            PermissionEnum::ReadAssets => __('Lihat Asset'),
+            PermissionEnum::UpdateAssets => __('Ubah Aset'),
+            PermissionEnum::DeleteAssets => __('Hapus Aset'),
+            PermissionEnum::DownloadAssets => __('Unduh Aset'),
+            PermissionEnum::ArchiveAssets => __('Arsipkan Aset'),
+            PermissionEnum::UnarchivedAssets => __('Batalkan Arsip Aset'),
+            PermissionEnum::VerifyAssets => __('Verifikasi Aset'),
+            PermissionEnum::CreateAssetHistories => __('Buat Riwayat'),
+            PermissionEnum::ReadAssetHistories => __('Lihat Riwayat'),
+            PermissionEnum::UpdateAssetHistories => __('Ubah Riwayat'),
+            PermissionEnum::DeleteAssetHistories => __('Hapus Riwayat'),
+            PermissionEnum::CreateAssetFinances => __('Buat Keuangan'),
+            PermissionEnum::ReadAssetFinances => __('Lihat Keuangan'),
+            PermissionEnum::UpdateAssetFinances => __('Ubah Keuangan'),
+            PermissionEnum::DeleteAssetFinances => __('Hapus Keuangan'),
+            PermissionEnum::CrudCategories => __('Menu Jenis Barang'),
+            PermissionEnum::CrudBrands => __('Menu Merk'),
             PermissionEnum::CrudDistributors => __('Menu Distributor'),
-            PermissionEnum::CrudResponsiblePersons => __('Menu Responsible Person'),
-            PermissionEnum::CrudLocations => __('Menu Location'),
-            PermissionEnum::CreatePrints => __('Print QR Code'),
+            PermissionEnum::CrudResponsiblePersons => __('Menu Penanggung Jawab'),
+            PermissionEnum::CrudLocations => __('Menu Lokasi'),
+            PermissionEnum::CreatePrints => __('Cetak QR-Code'),
         };
     }
 }

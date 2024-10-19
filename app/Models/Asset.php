@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AssetStatusEnum;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -12,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Vite;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class Asset extends Model
 {
@@ -78,24 +78,13 @@ class Asset extends Model
     ];
 
     /**
-     * Scope a query to only include active asset.
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
      */
-    public function scopeActive(Builder $query, bool $active): void
-    {
-        $query->where('active', $active);
-    }
-
-    /**
-     * Interact with the asset's qrcode url.
-     */
-    protected function qrCodeUrl(): Attribute
-    {
-        return Attribute::make(
-            get: function (mixed $value, array $attrs) {
-                return Storage::url($attrs['qr_code']);
-            },
-        );
-    }
+    protected $casts = [
+        'status' => AssetStatusEnum::class,
+    ];
 
     /**
      * Interact with the asset's photo url.
@@ -111,6 +100,26 @@ class Asset extends Model
                 return Vite::asset('resources/images/photo.png');
             }
         );
+    }
+
+    /**
+     * Interact with the asset's qrcode url.
+     */
+    protected function qrCodeUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function (mixed $value, array $attrs) {
+                return Storage::url($attrs['qr_code']);
+            },
+        );
+    }
+
+    /**
+     * Scope a query to only include active asset.
+     */
+    public function scopeActive(Builder $query, bool $active): void
+    {
+        $query->where('active', $active);
     }
 
     /**
@@ -175,5 +184,21 @@ class Asset extends Model
     public function assetArchive(): HasOne
     {
         return $this->hasOne(AssetArchive::class);
+    }
+
+    /**
+     * Get the asset verifications for the asset.
+     */
+    public function assetVerifications(): HasMany
+    {
+        return $this->hasMany(AssetVerification::class, 'asset_id', 'id');
+    }
+
+    /**
+     * Get the verification most recent asset.
+     */
+    public function latestVerification(): HasOne
+    {
+        return $this->hasOne(AssetVerification::class)->latestOfMany();
     }
 }
