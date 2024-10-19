@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\AssetStatusEnum;
 use App\Models\Asset;
 use App\Models\Brand;
 use App\Models\Category;
@@ -29,19 +30,21 @@ class AssetFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->word(),
             'code' => fake()->unique()->numerify('#/INV/####'),
+            'name' => fake()->word(),
             'category_id' => Category::factory(),
+            'serial_number' => fake()->unique()->numerify('SN-####'),
             'brand_id' => Brand::factory(),
             'type' => fake()->catchPhrase(),
-            'manufacturer' => fake()->company(),
-            'serial_number' => fake()->unique()->numerify('SN-####'),
-            'production_year' => fake()->year(),
-            'description' => fake()->optional()->sentence(),
-            'purchase_date' => fake()->date(),
+            'size' => fake()->numerify('### CC'),
+            'material' => fake()->word(),
+            'purchase_year' => fake()->year(),
             'distributor_id' => Distributor::factory(),
-            'invoice_number' => fake()->numerify('INV-####'),
-            'qty' => fake()->randomDigitNotNull(),
+            'frame_number' => fake()->numerify('RNG-#####'),
+            'engine_number' => fake()->numerify('MSN-#####'),
+            'police_number' => fake()->numerify('BM #### EA'),
+            'bpkb_number' => fake()->numerify('BPKB-#####'),
+            'origin' => fake()->text(50),
             'unit_price' => fake()->randomNumber(7, true),
             'photo' => UploadedFile::fake()
                 ->image('photo.png')
@@ -49,6 +52,7 @@ class AssetFactory extends Factory
             'qr_code' => UploadedFile::fake()
                 ->image('qr-code.png')
                 ->hashName(),
+            'status' => fake()->randomElement(AssetStatusEnum::class),
             'notes' => fake()->optional()->paragraph(),
         ];
     }

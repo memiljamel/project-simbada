@@ -33,14 +33,14 @@
         <div class="hidden justify-between items-center gap-4 w-full h-auto p-0 m-0 sm:flex sm:flex-col sm:my-2 lg:flex-row lg:m-0">
             <div class="inline-block w-auto h-auto p-2 m-0 overflow-hidden relative">
                 <p class="block w-auto h-auto body-2 text-black/[0.87] font-normal truncate dark:text-white/[0.87]">
-                    {{ __('Showing') }}
+                    {{ __('Menampilkan') }}
 
                     @if ($paginator->firstItem())
                         <span class="font-medium">
                             {{ $paginator->firstItem() }}
                         </span>
 
-                        {{ __('to') }}
+                        {{ __('sampai') }}
 
                         <span class="font-medium">
                             {{ $paginator->lastItem() }}
@@ -49,13 +49,13 @@
                         {{ $paginator->count() }}
                     @endif
 
-                    {{ __('of') }}
+                    {{ __('dari') }}
 
                     <span class="font-medium">
                         {{ $paginator->total() }}
                     </span>
 
-                    {{ __('rows') }}
+                    {{ __('baris') }}
                 </p>
             </div>
 

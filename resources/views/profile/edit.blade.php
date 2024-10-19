@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Edit Profile')
+@section('title', 'Ubah Profil')
 
 @section('content')
     <div class="flex flex-col w-full h-full p-0 m-0 relative">
@@ -16,14 +16,14 @@
                 <nav class="block w-full h-auto p-0 m-0 list-none rounded whitespace-nowrap overflow-hidden relative">
                     <ol class="block w-full h-auto p-0 m-0 overflow-hidden">
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
-                            <a href="" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
+                            <a href="{{ route('dashboard.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
                                 {{ __('Dashboard') }}
                             </a>
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
                             <span class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-black/[0.60] cursor-default dark:text-white/[0.60]">
-                                {{ __('Edit Profile') }}
+                                {{ __('Ubah Profil') }}
                             </span>
                         </li>
                     </ol>
@@ -43,7 +43,7 @@
                 {{-- Cards --}}
                 <div class="block w-full h-auto p-0 mt-4 bg-white rounded text-black/[0.87] shadow-01dp overflow-hidden dark:bg-charleston-green">
 
-                    <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('profile.update') }}" method="POST" autocomplete="off" autocapitalize="off">
+                    <form class="contents w-auto h-auto p-0 m-0 relative" action="{{ route('profile.update') }}" method="POST" autocomplete="off" autocapitalize="off" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -53,7 +53,7 @@
                                 <div class="flex-1 block w-auto h-auto p-0 m-0 overflow-hidden relative">
                                     <div class="block w-full h-auto p-0 m-0 relative">
                                         <h6 class="block w-full h-auto px-2 py-1.5 m-0 headline-6 text-black/[0.87] truncate dark:text-white/[0.87]">
-                                            {{ __('Edit Profile') }}
+                                            {{ __('Ubah Profil') }}
                                         </h6>
                                     </div>
                                 </div>
@@ -69,12 +69,37 @@
                                         <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
                                             <div class="block w-auto h-auto p-0 mb-0 relative">
 
+                                                <div class="flex justify-center items-center flex-wrap gap-4 w-auto h-auto p-0 m-0 relative sm:justify-start sm:flex-nowrap">
+                                                    <div class="inline-block w-auto h-auto p-0.5 m-0 align-top relative" data-te-lightbox-init>
+                                                        <img class="block min-w-[96px] w-24 h-24 p-0.5 m-0 rounded align-middle text-center text-transparent object-cover indent-[10000px] ring-2 ring-primary cursor-zoom-in data-[te-lightbox-disabled]:cursor-auto" src="{{ $user->photo_url }}" alt="" data-te-img="{{ $user->photo_url }}" />
+                                                    </div>
+
+                                                    <label class="inline-block w-auto h-auto p-0.5 m-0 align-top relative">
+                                                        <span class="sr-only">Choose profile photo</span>
+                                                        <input type="file" class="block w-full text-sm text-black/[0.60] file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-primary/[0.04] file:text-primary hover:file:bg-primary/[0.04] dark:text-white/[0.60]" id="photo" name="photo" autocomplete="off" autocapitalize="off" accept="image/jpeg, image/png" />
+                                                    </label>
+                                                </div>
+
+                                            </div>
+
+                                            @error('photo')
+                                                <span class="block w-full h-auto p-0 mt-2 text-xs tracking-normal text-error text-left break-words">
+                                                    {{ $message}}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-4 mt-4 relative sm:flex-row first:mt-0 last:mb-0">
+                                        <div class="group flex-1 inline-block w-full h-auto p-0 m-0 relative sm:basis-full">
+                                            <div class="block w-auto h-auto p-0 mb-0 relative">
+
                                                 {{-- Input --}}
                                                 <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
                                                     <input type="text" class="peer caret-primary block min-h-[48px] w-full rounded border-0 bg-transparent px-3 py-3 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $user->name) }}" autocomplete="off" autocapitalize="off" autofocus />
 
                                                     <label class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="name">
-                                                        {{ __('Name *') }}
+                                                        {{ __('Nama Pengguna *') }}
                                                     </label>
                                                 </div>
                                                 {{-- End Input --}}
@@ -122,7 +147,7 @@
                                                     <input type="password" class="peer caret-primary block min-h-[48px] w-full rounded border-0 bg-transparent px-3 py-3 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('password') is-invalid @enderror" id="password" name="password" value="" autocomplete="off" autocapitalize="off" />
 
                                                     <label class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="password">
-                                                        {{ __('Password') }}
+                                                        {{ __('Kata Sandi') }}
                                                     </label>
                                                 </div>
                                                 {{-- End Input --}}
@@ -146,7 +171,7 @@
                                                     <input type="password" class="peer caret-primary block min-h-[48px] w-full rounded border-0 bg-transparent px-3 py-3 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" value="" autocomplete="off" autocapitalize="off" />
 
                                                     <label class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="password_confirmation">
-                                                        {{ __('Password Confirmation') }}
+                                                        {{ __('Konfirmasi Kata Sandi') }}
                                                     </label>
                                                 </div>
                                                 {{-- End Input --}}
@@ -182,7 +207,7 @@
                                         {{-- Button --}}
                                         <div class="block w-auto h-auto p-0 m-0 relative">
                                             <button type="submit" class="inline-block min-w-[64px] w-auto h-9 p-2 m-0 bg-transparent rounded button text-primary text-center shadow-none align-middle truncate outline-none cursor-pointer relative hover:bg-primary/[0.04] active:bg-primary/[0.10] focus:bg-primary/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-ripple-init data-te-ripple-color="light">
-                                                {{ __('Submit') }}
+                                                {{ __('Kirim') }}
                                             </button>
                                         </div>
                                         {{-- End Button --}}

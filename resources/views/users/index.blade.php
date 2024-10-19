@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Users')
+@section('title', 'Pengguna')
 
 @section('content')
     <div class="flex flex-col w-full h-full p-0 m-0 relative">
@@ -16,14 +16,14 @@
                 <nav class="block w-full h-auto p-0 m-0 list-none rounded whitespace-nowrap overflow-hidden relative">
                     <ol class="block w-full h-auto p-0 m-0 overflow-hidden">
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
-                            <a href="" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
+                            <a href="{{ route('dashboard.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
                                 {{ __('Dashboard') }}
                             </a>
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
                             <span class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-black/[0.60] cursor-default dark:text-white/[0.60]">
-                                {{ __('Users') }}
+                                {{ __('Pengguna') }}
                             </span>
                         </li>
                     </ol>
@@ -49,7 +49,7 @@
                             <div class="flex-1 block w-auto h-auto p-0 m-0 overflow-hidden relative basis-auto order-1 sm:order-none">
                                 <div class="block w-full h-auto p-0 m-0 relative">
                                     <h6 class="block w-full h-auto px-2 py-1.5 m-0 headline-6 text-black/[0.87] truncate dark:text-white/[0.87]">
-                                        {{ __('All User') }}
+                                        {{ __('Daftar Pengguna') }}
                                     </h6>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
 
                                     {{-- Search --}}
                                     <div class="block w-full h-auto p-0 m-0 relative" data-te-input-wrapper-init>
-                                        <input type="search" class="peer caret-primary block min-h-[32px] w-full border-0 bg-transparent pl-10 pr-2 py-1.5 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 disabled:opacity-60 disabled:cursor-not-allowed" id="search" name="search" value="{{ $search }}" placeholder="Search..." autocomplete="off" spellcheck="false" autocapitalize="off" aria-label="Search" aria-describedby="button-search" />
+                                        <input type="search" class="peer caret-primary block min-h-[32px] w-full border-0 bg-transparent pl-10 pr-2 py-1.5 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 disabled:opacity-60 disabled:cursor-not-allowed" id="search" name="search" value="{{ $search }}" placeholder="Cari..." autocomplete="off" spellcheck="false" autocapitalize="off" aria-label="Cari" aria-describedby="button-search" />
 
                                         <button type="submit" class="block w-6 h-6 p-0 m-0 bg-transparent text-black/[0.60] rounded-full align-middle cursor-pointer outline-none transition duration-150 ease-in-out absolute left-2 top-1/2 -translate-y-1/2 z-0 dark:text-white/[0.60] peer-disabled:opacity-70 peer-disabled:cursor-not-allowed peer-disabled:hover:!bg-transparent peer-disabled:active:!bg-transparent peer-disabled:focus:!bg-transparent" id="button-search">
                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
@@ -78,7 +78,7 @@
 
                                     {{-- Icon Link --}}
                                     <div class="block w-auto h-auto p-0 m-0 relative">
-                                        <a href="{{ route('users.create') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Create" data-te-ripple-init data-te-ripple-color="light">
+                                        <a href="{{ route('users.create') }}" class="block w-10 h-10 p-2 m-0 bg-transparent rounded-full text-black/[0.60] outline-none cursor-pointer align-middle transition duration-150 ease-in-out hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12]" data-te-toggle="tooltip" title="Buat" data-te-ripple-init data-te-ripple-color="light">
                                             <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                 <path d="M0 0h24v24H0z" fill="none" />
                                                 <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
@@ -106,23 +106,26 @@
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                 {{ __('#') }}
                                             </th>
+                                            <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
+                                                {{ __('Photo') }}
+                                            </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Name') }}
+                                                {{ __('Nama Pengguna') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                 {{ __('Email') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Description') }}
+                                                {{ __('Deskripsi') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                {{ __('Access Level') }}
+                                                {{ __('Hak Akses') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-right truncate dark:text-white/[0.87]">
-                                                {{ __('Total Permissions') }}
+                                                {{ __('Jumlah Izin') }}
                                             </th>
                                             <th class="table-cell w-auto h-14 px-4 m-0 subtitle-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]">
-                                                {{ __('Action') }}
+                                                {{ __('Aksi') }}
                                             </th>
                                         </tr>
                                     </thead>
@@ -133,6 +136,9 @@
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                     {{ $loop->iteration + ($users->currentPage() - 1) * $users->perPage() }}
                                                 </td>
+                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]" data-te-lightbox-init>
+                                                    <img class="block min-w-[32px] w-8 h-8 p-0.5 mx-auto rounded align-middle text-center text-transparent object-cover indent-[10000px] ring-2 ring-primary cursor-zoom-in data-[te-lightbox-disabled]:cursor-auto" src="{{ $user->photo_url }}" alt="{{ $user->name }}" data-te-img="{{ $user->photo_url }}" />
+                                                </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                     {{ $user->name }}
                                                 </td>
@@ -140,7 +146,7 @@
                                                     {{ $user->email }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                    {{ $user->description }}
+                                                    {{ $user->description ?? __('-') }}
                                                 </td>
                                                 <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
                                                     {{ App\Enums\RoleEnum::Custom->label() }}
@@ -172,7 +178,7 @@
 
                                                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                             <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                {{ __('Details') }}
+                                                                                {{ __('Detail') }}
                                                                             </span>
                                                                         </div>
                                                                     </a>
@@ -189,7 +195,7 @@
 
                                                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                             <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                {{ __('Edit') }}
+                                                                                {{ __('Ubah') }}
                                                                             </span>
                                                                         </div>
                                                                     </a>
@@ -200,7 +206,7 @@
                                                                         @csrf
                                                                         @method('DELETE')
 
-                                                                        <button type="button" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none whitespace-nowrap overflow-hidden select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
+                                                                        <button type="submit" class="flex justify-between items-center gap-4 w-full h-10 py-2 px-4 m-0 body-2 text-black/[0.60] no-underline outline-none whitespace-nowrap overflow-hidden select-none hover:bg-black/[0.04] active:bg-black/[0.10] focus:bg-black/[0.12] dark:text-white/[0.60] dark:hover:bg-white/[0.04] dark:active:bg-white/[0.10] dark:focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-dropdown-item-ref data-te-ripple-init data-te-ripple-color="light">
                                                                             <div class="inline-block w-auto h-auto p-0 m-0 relative">
                                                                                 <svg class="pointer-events-none w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                                                                                     <path d="M0 0h24v24H0z" fill="none" />
@@ -210,7 +216,7 @@
 
                                                                             <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
                                                                                 <span class="block w-full h-auto p-0 m-0 text-black/[0.87] text-left truncate dark:text-white/[0.87]">
-                                                                                    {{ __('Delete') }}
+                                                                                    {{ __('Hapus') }}
                                                                                 </span>
                                                                             </div>
                                                                         </button>
@@ -225,8 +231,8 @@
                                             </tr>
                                         @empty
                                             <tr class="table-row text-inherit align-middle outline-none relative">
-                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]" colspan="7">
-                                                    {{ __('No data available.') }}
+                                                <td class="table-cell w-auto h-[52px] px-4 m-0 body-2 text-black/[0.87] text-center truncate dark:text-white/[0.87]" colspan="8">
+                                                    {{ __('Tidak ada data.') }}
                                                 </td>
                                             </tr>
                                         @endforelse

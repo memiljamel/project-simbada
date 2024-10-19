@@ -33,25 +33,25 @@
                     <ul class="flex flex-col justify-start items-center w-auto h-auto p-0 my-4 relative lg:flex-row lg:m-0" data-te-navbar-nav-ref>
                         <li class="block w-full h-auto p-0 m0 overflow-hidden relative lg:inline-block lg:w-auto" data-te-nav-item-ref>
                             <a class="block w-auto h-auto p-2 m-0 text-white/[0.60] subtitle-1 no-underline outline-none align-middle hover:text-white hover:underline focus:text-white focus:underline active:text-white active:underline [&[class$='active']]:text-white active" href="#home" data-te-nav-link-ref>
-                                {{ __('Home') }}
+                                {{ __('Beranda') }}
                             </a>
                         </li>
 
                         <li class="block w-full h-auto p-0 m0 overflow-hidden relative lg:inline-block lg:w-auto" data-te-nav-item-ref>
                             <a class="block w-auto h-auto p-2 m-0 text-white/[0.60] subtitle-1 no-underline outline-none align-middle hover:text-white hover:underline focus:text-white focus:underline active:text-white active:underline [&[class$='active']]:text-white" href="#benefits" data-te-nav-link-ref>
-                                {{ __('Benefits') }}
+                                {{ __('Keuntungan') }}
                             </a>
                         </li>
 
                         <li class="block w-full h-auto p-0 m0 overflow-hidden relative lg:inline-block lg:w-auto" data-te-nav-item-ref>
                             <a class="block w-auto h-auto p-2 m-0 text-white/[0.60] subtitle-1 no-underline outline-none align-middle hover:text-white hover:underline focus:text-white focus:underline active:text-white active:underline [&[class$='active']]:text-white" href="#features" data-te-nav-link-ref>
-                                {{ __('Features') }}
+                                {{ __('Fitur') }}
                             </a>
                         </li>
 
                         <li class="block w-full h-auto p-0 m0 overflow-hidden relative lg:inline-block lg:w-auto" data-te-nav-item-ref>
                             <a class="block w-auto h-auto p-2 m-0 text-white/[0.60] subtitle-1 no-underline outline-none align-middle hover:text-white hover:underline focus:text-white focus:underline active:text-white active:underline [&[class$='active']]:text-white" href="#about-us" data-te-nav-link-ref>
-                                {{ __('About Us') }}
+                                {{ __('Tentang') }}
                             </a>
                         </li>
                     </ul>
@@ -59,14 +59,14 @@
                     <div class="inline-block w-full h-auto p-0 my-1 relative lg:w-auto lg:m-0">
                         @auth
                             <div class="block w-auto h-auto p-0 m-0 relative">
-                                <a href="" class="inline-block min-w-[64px] w-full h-9 p-2 m-0 bg-transparent rounded button text-white text-center shadow-none align-middle truncate outline-none cursor-pointer transition duration-150 ease-in-out relative hover:bg-white/[0.04] active:bg-white/[0.10] focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-ripple-init data-te-ripple-color="light">
+                                <a href="{{ route('dashboard.index') }}" class="inline-block min-w-[64px] w-full h-9 p-2 m-0 bg-transparent rounded button text-white text-center shadow-none align-middle truncate outline-none cursor-pointer transition duration-150 ease-in-out relative hover:bg-white/[0.04] active:bg-white/[0.10] focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-ripple-init data-te-ripple-color="light">
                                     {{ __('Dashboard') }}
                                 </a>
                             </div>
                         @else
                             <div class="block w-auto h-auto p-0 m-0 relative">
                                 <a href="{{ route('login.index') }}" class="inline-block min-w-[64px] w-full h-9 p-2 m-0 bg-transparent rounded button text-white text-center shadow-none align-middle truncate outline-none cursor-pointer transition duration-150 ease-in-out relative hover:bg-white/[0.04] active:bg-white/[0.10] focus:bg-white/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-ripple-init data-te-ripple-color="light">
-                                    {{ __('Login') }}
+                                    {{ __('Masuk') }}
                                 </a>
                             </div>
                         @endauth

@@ -6,10 +6,13 @@ namespace App\Models;
 use App\Enums\RoleEnum;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Vite;
 use Laratrust\Contracts\LaratrustUser;
 use Laratrust\Traits\HasRolesAndPermissions;
 use Laravel\Sanctum\HasApiTokens;
@@ -59,6 +62,7 @@ class User extends Authenticatable implements LaratrustUser
      * @var array<int, string>
      */
     protected $fillable = [
+        'photo',
         'name',
         'email',
         'password',
@@ -82,6 +86,22 @@ class User extends Authenticatable implements LaratrustUser
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Interact with the asset's photo url.
+     */
+    protected function photoUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function (mixed $value, array $attrs) {
+                if ($attrs['photo'] && Storage::disk('public')->exists($attrs['photo'])) {
+                    return Storage::url($attrs['photo']);
+                }
+
+                return Vite::asset('resources/images/photo.png');
+            }
+        );
+    }
 
     /**
      * Scope a query to only include without administrator role.

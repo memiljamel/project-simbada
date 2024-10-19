@@ -13,34 +13,38 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
             $table->string('code')->unique();
+            $table->string('name');
             $table->foreignUuid('category_id')
                 ->constrained('categories', 'id')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->string('serial_number');
+            $table->text('photo')->nullable();
             $table->foreignUuid('brand_id')
                 ->constrained('brands', 'id')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string('type');
-            $table->string('manufacturer');
-            $table->string('serial_number')->unique();
-            $table->integer('production_year');
-            $table->text('description')->nullable();
-            $table->date('purchase_date');
+            $table->string('size');
+            $table->string('material');
+            $table->integer('purchase_year');
             $table->foreignUuid('distributor_id')
+                ->nullable()
                 ->constrained('distributors', 'id')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->string('invoice_number');
-            $table->integer('qty');
+            $table->string('frame_number')->nullable();
+            $table->string('engine_number')->nullable();
+            $table->string('police_number')->nullable();
+            $table->string('bpkb_number')->nullable();
+            $table->text('origin');
             $table->bigInteger('unit_price');
-            $table->bigInteger('total_price');
-            $table->text('photo')->nullable();
+            $table->string('status');
             $table->text('notes')->nullable();
-            $table->text('qr_code');
             $table->boolean('active')->default(true);
+            $table->boolean('verified')->default(false);
+            $table->text('qr_code');
             $table->timestamps();
         });
     }

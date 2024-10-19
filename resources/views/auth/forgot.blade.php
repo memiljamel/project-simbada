@@ -16,7 +16,7 @@
                             <img class="block w-12 h-auto p-0 mx-auto align-middle" src="" alt="Logo" />
 
                             <span class="block w-full h-auto p-0 mt-3 headline-5 text-black/[0.87] text-center truncate dark:text-white">
-                                {{ __('Find your account') }}
+                                {{ __('Temukan Profil Anda') }}
                             </span>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         {{-- Button --}}
                         <div class="block w-full max-w-3xl h-auto p-0 my-0 relative">
                             <button type="submit" class="inline-block min-w-[64px] w-full h-9 px-4 py-2 m-0 rounded button text-black/[0.87] text-center align-middle truncate outline-none cursor-pointer relative disabled:opacity-70 disabled:cursor-not-allowed border-none text-white bg-primary shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] transition-all hover:shadow-[0_2px_4px_-1px_rgba(0,0,0,0.2),_0_4px_5px_0_rgba(0,0,0,0.14),_0_1px_10px_0_rgba(0,0,0,0.12)] focus:shadow-[0_2px_4px_-1px_rgba(0,0,0,0.2),_0_4px_5px_0_rgba(0,0,0,0.14),_0_1px_10px_0_rgba(0,0,0,0.12)] active:shadow-[0_5px_5px_-3px_rgba(0,0,0,0.2),_0_8px_10px_1px_rgba(0,0,0,0.14),_0_3px_14px_2px_rgba(0,0,0,0.12)] disabled:!shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)]" data-te-ripple-init data-te-ripple-color="light">
-                                {{ __('Send Password Reset Link') }}
+                                {{ __('Kirim') }}
                             </button>
                         </div>
                         {{-- End Button --}}

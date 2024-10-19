@@ -43,10 +43,10 @@ class AssetActiveController extends Controller
 
         $assets = Asset::active(true)->with(['category', 'brand', 'latestHistory'])
             ->when($search, function (Builder $query, ?string $search) {
-                $query->where('name', 'LIKE', "%{$search}%")
-                    ->orWhere('code', 'LIKE', "%{$search}%")
+                $query->where('code', 'LIKE', "%{$search}%")
+                    ->orWhere('name', 'LIKE', "%{$search}%")
                     ->orWhere('type', 'LIKE', "%{$search}%")
-                    ->orWhere('purchase_date', 'LIKE', "%{$search}%")
+                    ->orWhere('purchase_year', 'LIKE', "%{$search}%")
                     ->orWhereHas('category', function (Builder $query) use ($search) {
                         $query->where('name', 'LIKE', "%{$search}%");
                     })
@@ -54,7 +54,13 @@ class AssetActiveController extends Controller
                         $query->where('name', 'LIKE', "%{$search}%");
                     })
                     ->orWhereHas('latestHistory', function (Builder $query) use ($search) {
-                        $query->where('date_from', 'LIKE', "%{$search}%");
+                        $query->where('date_from', 'LIKE', "%{$search}%")
+                            ->orWhereHas('responsiblePerson', function (Builder $query) use ($search) {
+                                $query->where('name', 'LIKE', "%{$search}%");
+                            })
+                            ->orWhereHas('location', function (Builder $query) use ($search) {
+                                $query->where('name', 'LIKE', "%{$search}%");
+                            });
                     });
             })
             ->latest()
@@ -103,26 +109,34 @@ class AssetActiveController extends Controller
                 'name' => $request->input('brand'),
             ]);
 
-            $distributor = Distributor::firstOrCreate([
-                'name' => $request->input('distributor'),
-            ]);
-
             $asset = new Asset;
-            $asset->name = $request->input('name');
             $asset->code = $request->input('code');
+            $asset->name = $request->input('name');
             $asset->category_id = $category->getAttribute('id');
+            $asset->serial_number = $request->input('serial_number');
             $asset->brand_id = $brand->getAttribute('id');
             $asset->type = $request->input('type');
-            $asset->manufacturer = $request->input('manufacturer');
-            $asset->serial_number = $request->input('serial_number');
-            $asset->production_year = $request->input('production_year');
-            $asset->description = $request->input('description');
-            $asset->purchase_date = $request->input('purchase_date');
-            $asset->distributor_id = $distributor->getAttribute('id');
-            $asset->invoice_number = $request->input('invoice_number');
-            $asset->qty = $request->input('qty');
+            $asset->size = $request->input('size');
+            $asset->material = $request->input('material');
+            $asset->purchase_year = $request->input('purchase_year');
+            $asset->frame_number = $request->input('frame_number');
+            $asset->engine_number = $request->input('engine_number');
+            $asset->police_number = $request->input('police_number');
+            $asset->bpkb_number = $request->input('bpkb_number');
+            $asset->origin = $request->input('origin');
             $asset->unit_price = $request->input('unit_price');
+            $asset->status = $request->input('status');
             $asset->notes = $request->input('notes');
+
+            if (! $request->filled('distributor')) {
+                $asset->distributor_id = $request->input('distributor');
+            } else {
+                $distributor = Distributor::firstOrCreate([
+                    'name' => $request->input('distributor'),
+                ]);
+
+                $asset->distributor_id = $distributor->getAttribute('id');
+            }
 
             if ($request->hasFile('photo')) {
                 $asset->photo = Storage::disk('public')->put(
@@ -205,25 +219,33 @@ class AssetActiveController extends Controller
                 'name' => $request->input('brand'),
             ]);
 
-            $distributor = Distributor::firstOrCreate([
-                'name' => $request->input('distributor'),
-            ]);
-
-            $asset->name = $request->input('name');
             $asset->code = $request->input('code');
+            $asset->name = $request->input('name');
             $asset->category_id = $category->getAttribute('id');
+            $asset->serial_number = $request->input('serial_number');
             $asset->brand_id = $brand->getAttribute('id');
             $asset->type = $request->input('type');
-            $asset->manufacturer = $request->input('manufacturer');
-            $asset->serial_number = $request->input('serial_number');
-            $asset->production_year = $request->input('production_year');
-            $asset->description = $request->input('description');
-            $asset->purchase_date = $request->input('purchase_date');
-            $asset->distributor_id = $distributor->getAttribute('id');
-            $asset->invoice_number = $request->input('invoice_number');
-            $asset->qty = $request->input('qty');
+            $asset->size = $request->input('size');
+            $asset->material = $request->input('material');
+            $asset->purchase_year = $request->input('purchase_year');
+            $asset->frame_number = $request->input('frame_number');
+            $asset->engine_number = $request->input('engine_number');
+            $asset->police_number = $request->input('police_number');
+            $asset->bpkb_number = $request->input('bpkb_number');
+            $asset->origin = $request->input('origin');
             $asset->unit_price = $request->input('unit_price');
+            $asset->status = $request->input('status');
             $asset->notes = $request->input('notes');
+
+            if (! $request->filled('distributor')) {
+                $asset->distributor_id = $request->input('distributor');
+            } else {
+                $distributor = Distributor::firstOrCreate([
+                    'name' => $request->input('distributor'),
+                ]);
+
+                $asset->distributor_id = $distributor->getAttribute('id');
+            }
 
             if ($request->hasFile('photo')) {
                 if ($asset->photo && Storage::disk('public')->exists($asset->photo)) {

@@ -51,18 +51,6 @@ class UpdateAssetHistoryRequest extends FormRequest
                 'min:1',
                 'max:1000',
             ],
-            'condition_percentage' => [
-                'required',
-                'integer',
-                'min:1',
-                'max:100',
-            ],
-            'completeness_percentage' => [
-                'required',
-                'integer',
-                'min:1',
-                'max:100',
-            ],
             'notes' => [
                 'nullable',
                 'string',

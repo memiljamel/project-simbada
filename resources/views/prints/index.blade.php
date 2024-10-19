@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Prints')
+@section('title', 'Cetak QR-Code')
 
 @section('content')
     <div class="flex flex-col w-full h-full p-0 m-0 relative">
@@ -16,14 +16,14 @@
                 <nav class="block w-full h-auto p-0 m-0 list-none rounded whitespace-nowrap overflow-hidden relative">
                     <ol class="block w-full h-auto p-0 m-0 overflow-hidden">
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
-                            <a href="" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
+                            <a href="{{ route('dashboard.index') }}" class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-primary no-underline outline-none cursor-pointer hover:underline focus:underline active:underline">
                                 {{ __('Dashboard') }}
                             </a>
                         </li>
 
                         <li class="inline-block w-auto h-auto p-0 m-0 relative [&+li::before]:content-['/'] [&+li::before]:mx-1 [&+li::before]:text-black/[0.60] dark:[&+li::before]:text-white/[0.60]">
                             <span class="inline-block w-auto h-auto p-0 m-0 subtitle-1 text-black/[0.60] cursor-default dark:text-white/[0.60]">
-                                {{ __('Prints') }}
+                                {{ __('Cetak QR-Code') }}
                             </span>
                         </li>
                     </ol>
@@ -43,7 +43,7 @@
                                 <div class="flex-1 block w-auto h-auto p-0 m-0 overflow-hidden relative">
                                     <div class="block w-full h-auto p-0 m-0 relative">
                                         <h6 class="block w-full h-auto px-2 py-1.5 m-0 headline-6 text-black/[0.87] truncate dark:text-white/[0.87]">
-                                            {{ __('Prints') }}
+                                            {{ __('Cetak QR-Code') }}
                                         </h6>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                                                     </select>
 
                                                     <label for="asset_id" data-te-select-label-ref>
-                                                        {{ __('Asset Name *') }}
+                                                        {{ __('Nama Aset *') }}
                                                     </label>
                                                 </div>
                                                 {{-- End Select --}}
@@ -96,7 +96,7 @@
                                                     <input type="number" class="peer caret-primary block min-h-[48px] w-full rounded border-0 bg-transparent px-3 py-3 subtitle-1 text-black/[0.87] outline-none transition-none duration-0 ease-linear focus:placeholder:opacity-100 file:hidden file:w-0 file:opacity-0 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white/[0.87] dark:placeholder:text-white/[0.87] [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 [&[type='file']]:opacity-0 group-data-[te-validation-state='invalid']:!caret-error disabled:!opacity-60 disabled:cursor-not-allowed group-has-[[data-te-input-state-active]]:opacity-100 group-has-[.is-invalid]:!caret-error @error('qty') is-invalid @enderror" id="qty" name="qty" value="{{ old('qty') }}" autocomplete="off" autocapitalize="off" />
 
                                                     <label class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-black/[0.60] transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-white/[0.60] dark:peer-focus:text-primary group-data-[te-validation-state='invalid']:!text-error group-data-[te-validation-state='invalid']:peer-focus:!text-error peer-disabled:opacity-60 peer-disabled:cursor-not-allowed group-has-[.is-invalid]:!text-error" for="qty">
-                                                        {{ __('Qty *') }}
+                                                        {{ __('Jumlah *') }}
                                                     </label>
                                                 </div>
                                                 {{-- End Input --}}
@@ -113,7 +113,7 @@
 
                                     <div class="flex flex-col justify-between item-center gap-4 w-full h-auto p-0 mb-2 mt-0 relative sm:flex-row first:mt-0 last:mb-0">
                                         <span class="flex-1 inline-block w-full h-auto p-0 m-0 caption text-black/[0.60] truncate dark:text-white/[0.60]">
-                                            {{ __('Size *') }}
+                                            {{ __('Ukuran *') }}
                                         </span>
                                     </div>
 
@@ -166,7 +166,7 @@
                                         {{-- Button --}}
                                         <div class="block w-auto h-auto p-0 m-0 relative">
                                             <button type="submit" class="inline-block min-w-[64px] w-auto h-9 p-2 m-0 bg-transparent rounded button text-primary text-center shadow-none align-middle truncate outline-none cursor-pointer relative hover:bg-primary/[0.04] active:bg-primary/[0.10] focus:bg-primary/[0.12] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:!bg-transparent disabled:active:!bg-transparent disabled:focus:!bg-transparent" data-te-ripple-init data-te-ripple-color="light">
-                                                {{ __('Submit') }}
+                                                {{ __('Kirim') }}
                                             </button>
                                         </div>
                                         {{-- End Button --}}

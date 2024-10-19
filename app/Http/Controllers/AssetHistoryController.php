@@ -42,8 +42,6 @@ class AssetHistoryController extends Controller
             ->when($search, function (Builder $query, ?string $search) {
                 $query->where('date_from', 'LIKE', "%{$search}%")
                     ->orWhere('qty', 'LIKE', "%{$search}%")
-                    ->orWhere('condition_percentage', 'LIKE', "%{$search}%")
-                    ->orWhere('completeness_percentage', 'LIKE', "%{$search}%")
                     ->orWhereHas('asset', function (Builder $query) use ($search) {
                         $query->where('name', 'LIKE', "%{$search}%");
                     })
@@ -106,8 +104,6 @@ class AssetHistoryController extends Controller
             $history->responsible_person_id = $person->getAttribute('id');
             $history->location_id = $location->getAttribute('id');
             $history->qty = $request->input('qty');
-            $history->condition_percentage = $request->input('condition_percentage');
-            $history->completeness_percentage = $request->input('completeness_percentage');
             $history->notes = $request->input('notes');
             $history->save();
         });
@@ -164,8 +160,6 @@ class AssetHistoryController extends Controller
             $history->responsible_person_id = $person->getAttribute('id');
             $history->location_id = $location->getAttribute('id');
             $history->qty = $request->input('qty');
-            $history->condition_percentage = $request->input('condition_percentage');
-            $history->completeness_percentage = $request->input('completeness_percentage');
             $history->notes = $request->input('notes');
             $history->save();
         });

@@ -20,8 +20,8 @@ enum FinanceTypeEnum: string
     public function label(): string
     {
         return match ($this) {
-            FinanceTypeEnum::Income => __('Income'),
-            FinanceTypeEnum::Expense => __('Expense'),
+            FinanceTypeEnum::Income => __('Pemasukan'),
+            FinanceTypeEnum::Expense => __('Pengeluaran'),
         };
     }
 }

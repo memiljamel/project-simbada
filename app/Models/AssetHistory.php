@@ -57,8 +57,6 @@ class AssetHistory extends Model
         'responsible_person',
         'location',
         'qty',
-        'condition_percentage',
-        'completeness_percentage',
         'notes',
     ];
 
