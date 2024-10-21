@@ -13,7 +13,7 @@
 
                     <div class="flex flex-col flex-grow-0 w-full h-auto p-4 m-0 relative lg:px-6">
                         <div class="inline-block p-0 my-4 overflow-hidden relative">
-                            <img class="block w-12 h-auto p-0 mx-auto align-middle" src="" alt="Logo" />
+                            <img class="block w-12 h-auto p-0 mx-auto align-middle" src="{{ Vite::asset('resources/images/android-chrome-512x512.png') }}" alt="Logo" />
 
                             <span class="block w-full h-auto p-0 mt-3 headline-5 text-black/[0.87] text-center truncate dark:text-white">
                                 {{ __('Temukan Profil Anda') }}

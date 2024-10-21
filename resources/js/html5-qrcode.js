@@ -39,11 +39,8 @@ let html5QrcodeScanner = new Html5QrcodeScanner(
         showZoomSliderIfSupported: true,
         fps: 10,
         qrbox: {
-            width: 250,
-            height: 250,
-        },
-        videoConstraints: {
-            facingMode: { exact: 'environment' },
+            width: window.innerWidth >= 1024 ? 250 : 150,
+            height: window.innerWidth >= 1024 ? 250 : 150,
         },
         formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE],
         useBarCodeDetectorIfSupported: false,

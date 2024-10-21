@@ -260,11 +260,11 @@
                                         </div>
 
                                         <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                            <div class="inline-block w-auto h-auto p-0.5 m-0 align-top relative" data-te-lightbox-init>
+                                            <div class="inline-block w-auto h-auto p-0.5 ml-4 align-top relative first:ml-0" data-te-lightbox-init>
                                                 <img class="block min-w-[96px] w-24 h-24 p-0.5 m-0 rounded align-middle text-center text-transparent object-cover indent-[10000px] ring-2 ring-primary cursor-zoom-in data-[te-lightbox-disabled]:cursor-auto" src="{{ $asset->qr_code_url }}" alt="{{ $asset->name }}" data-te-img="{{ $asset->qr_code_url }}" />
                                             </div>
 
-                                            <div class="inline-block w-auto h-auto p-0.5 m-0 align-top relative" data-te-lightbox-init>
+                                            <div class="inline-block w-auto h-auto p-0.5 ml-4 align-top relative first:ml-0" data-te-lightbox-init>
                                                 <img class="block min-w-[96px] w-24 h-24 p-0.5 m-0 rounded align-middle text-center text-transparent object-cover indent-[10000px] ring-2 ring-primary cursor-zoom-in data-[te-lightbox-disabled]:cursor-auto" src="{{ $asset->photo_url }}" alt="{{ $asset->name }}" data-te-img="{{ $asset->photo_url }}" />
                                             </div>
                                         </div>
@@ -756,7 +756,7 @@
                                                 </div>
 
                                                 <div class="flex-1 inline-block w-full h-auto p-0 m-0 overflow-hidden relative">
-                                                    <div class="inline-block w-auto h-auto p-0.5 m-0 align-top relative" data-te-lightbox-init>
+                                                    <div class="inline-block w-auto h-auto p-0.5 ml-4 align-top relative first:ml-0" data-te-lightbox-init>
                                                         <img class="block min-w-[96px] w-24 h-24 p-0.5 m-0 rounded align-middle text-center text-transparent object-cover indent-[10000px] ring-2 ring-primary cursor-zoom-in data-[te-lightbox-disabled]:cursor-auto" src="{{ $verification->photo_url }}" alt="" data-te-img="{{ $verification->photo_url }}" />
                                                     </div>
                                                 </div>
