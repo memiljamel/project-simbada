@@ -1,3 +1,7 @@
+import.meta.glob([
+    '../images/**',
+    '../fonts/**',
+]);
 import {
     Autocomplete,
     Collapse,
